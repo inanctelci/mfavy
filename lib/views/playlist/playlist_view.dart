@@ -50,7 +50,8 @@ class PlaylistView extends StatelessWidget {
                       children: [
                         SizedBox(height: controller.initialSize),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Get.width * 0.06),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -132,7 +133,9 @@ class PlaylistView extends StatelessWidget {
             child: Obx(() {
               return AnimatedContainer(
                 duration: Duration(milliseconds: 250),
-                color: controller.showTopBar ? AppConstants.kAppGrey.withOpacity(1) : AppConstants.kAppGrey.withOpacity(0),
+                color: controller.showTopBar
+                    ? AppConstants.kAppGrey.withOpacity(1)
+                    : AppConstants.kAppGrey.withOpacity(0),
                 padding: EdgeInsets.symmetric(
                   horizontal: Get.width * 0.06,
                   vertical: Get.height * 0.04,
@@ -151,7 +154,8 @@ class PlaylistView extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: SvgPicture.asset('assets/icons/arrow-left.svg'),
+                          child:
+                              SvgPicture.asset('assets/icons/arrow-left.svg'),
                         ),
                       ),
                       Positioned(
@@ -178,15 +182,17 @@ class PlaylistView extends StatelessWidget {
                           },
                           child: SvgPicture.asset(
                             'assets/icons/3-dots.svg',
-                            color: controller.showTopBar ? Colors.white.withOpacity(0) : Colors.white.withOpacity(1),
+                            color: controller.showTopBar
+                                ? Colors.white.withOpacity(0)
+                                : Colors.white.withOpacity(1),
                           ),
                         ),
                       ),
                       Positioned(
                         right: 0,
-                        bottom: Get.height * 0.23 - controller.buttonPosition.clamp(Get.height * 0.3, double.infinity),
+                        top: Get.height * 0.05 +
+                            controller.buttonPosition.clamp(0, double.infinity),
                         child: Stack(
-                          alignment: Alignment.bottomRight,
                           children: [
                             Container(
                               width: Get.width * 0.15,

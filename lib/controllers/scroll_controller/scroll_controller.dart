@@ -3,8 +3,8 @@ import 'package:flutterframework/export.dart';
 class PlaylistScrollController extends GetxController {
   final _imageSize = (Get.height * 0.25).obs;
   final _initialSize = (Get.height * 0.25).obs;
-  final _buttonPosition = (Get.height * 0.62).obs;
-  final _containerinitalHeight = (Get.height * 0.62).obs;
+  final _buttonPosition = (Get.height * 0.31).obs;
+  final _containerinitalHeight = (Get.height * 0.31).obs;
   final _imageOpacity = 1.0.obs;
   final _showTopBar = false.obs;
 
