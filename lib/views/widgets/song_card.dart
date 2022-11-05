@@ -18,27 +18,50 @@ class SongCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
       child: Row(
         children: [
-          showCrowns
-              ? Container(
-                  width: Get.width * 0.06,
-                  child: getCrowns(index!),
-                )
-              : SizedBox(),
-          Container(
-            height: Get.height * 0.125,
-            width: Get.width * 0.32,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(image: AssetImage('assets/images/ebrugundes.png'), fit: BoxFit.cover),
+          // showCrowns
+          //     ? Container(
+          //         width: Get.width * 0.06,
+          //         child: Center(
+          //           child: Text(
+          //             (index! + 1).toString(),
+          //             style: TextStyle(
+          //               fontFamily: 'Mulish-ExtraBold',
+          //               fontSize: Get.width * 0.04,
+          //               color: Colors.white,
+          //             ),
+          //           ),
+          //         ),
+          //       )
+          //     : const SizedBox(),
+          Stack(children: [
+            Container(
+              height: Get.height * 0.125,
+              width: Get.width * 0.32,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(image: AssetImage('assets/images/ebrugundes.png'), fit: BoxFit.cover),
+              ),
             ),
-          ),
+            index == 0 || index == 1 || index == 2
+                ? SvgPicture.asset(
+                    index == 0
+                        ? 'assets/icons/medal-gold.svg'
+                        : index == 1
+                            ? 'assets/icons/medal-silver.svg'
+                            : index == 2
+                                ? 'assets/icons/medal-bronze.svg'
+                                : '',
+                    width: Get.width * 0.08,
+                  )
+                : const SizedBox(),
+          ]),
           SizedBox(
             width: Get.width * 0.02,
           ),
           Container(
             height: Get.height * 0.125,
-            width: Get.width * 0.48,
+            width: showCrowns ? Get.width * 0.48 : Get.width * 0.54,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -194,27 +217,27 @@ class SongCard extends StatelessWidget {
 
   Widget getCrowns(int index) {
     switch (index) {
-      case 0:
-        return Center(
-          child: SvgPicture.asset(
-            'assets/icons/crown.svg',
-            color: AppConstants.kCrownGold,
-          ),
-        );
-      case 1:
-        return Center(
-          child: SvgPicture.asset(
-            'assets/icons/crown.svg',
-            color: AppConstants.kCrownSilver,
-          ),
-        );
-      case 2:
-        return Center(
-          child: SvgPicture.asset(
-            'assets/icons/crown.svg',
-            color: AppConstants.kCrownBronze,
-          ),
-        );
+      // case 0:
+      //   return Center(
+      //     child: SvgPicture.asset(
+      //       'assets/icons/crown.svg',
+      //       color: AppConstants.kCrownGold,
+      //     ),
+      //   );
+      // case 1:
+      //   return Center(
+      //     child: SvgPicture.asset(
+      //       'assets/icons/crown.svg',
+      //       color: AppConstants.kCrownSilver,
+      //     ),
+      //   );
+      // case 2:
+      //   return Center(
+      //     child: SvgPicture.asset(
+      //       'assets/icons/crown.svg',
+      //       color: AppConstants.kCrownBronze,
+      //     ),
+      //   );
       default:
         return Center(
           child: Text(

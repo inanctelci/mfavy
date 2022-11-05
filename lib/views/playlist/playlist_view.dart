@@ -50,8 +50,7 @@ class PlaylistView extends StatelessWidget {
                       children: [
                         SizedBox(height: controller.initialSize),
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Get.width * 0.06),
+                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -133,9 +132,7 @@ class PlaylistView extends StatelessWidget {
             child: Obx(() {
               return AnimatedContainer(
                 duration: Duration(milliseconds: 250),
-                color: controller.showTopBar
-                    ? AppConstants.kAppGrey.withOpacity(1)
-                    : AppConstants.kAppGrey.withOpacity(0),
+                color: controller.showTopBar ? AppConstants.kAppGrey.withOpacity(1) : AppConstants.kAppGrey.withOpacity(0),
                 padding: EdgeInsets.symmetric(
                   horizontal: Get.width * 0.06,
                   vertical: Get.height * 0.04,
@@ -154,8 +151,7 @@ class PlaylistView extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child:
-                              SvgPicture.asset('assets/icons/arrow-left.svg'),
+                          child: SvgPicture.asset('assets/icons/arrow-left.svg'),
                         ),
                       ),
                       Positioned(
@@ -177,21 +173,240 @@ class PlaylistView extends StatelessWidget {
                         right: 0,
                         top: Get.height * 0.02,
                         child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
+                          onTap: controller.showTopBar
+                              ? () {}
+                              : () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        alignment: Alignment.bottomCenter,
+                                        insetPadding: EdgeInsets.zero,
+                                        child: Container(
+                                          width: Get.width,
+                                          height: Get.height * 0.16,
+                                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.08, vertical: Get.width * 0.04),
+                                          color: AppConstants.kAppBlack,
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                    'assets/icons/trash.svg',
+                                                    color: AppConstants.kPrimaryColor,
+                                                    width: Get.width * 0.06,
+                                                  ),
+                                                  SizedBox(
+                                                    width: Get.width * 0.05,
+                                                  ),
+                                                  Text(
+                                                    'Çalma listesini sil',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mulish-SemiBold',
+                                                      fontSize: Get.width * 0.04,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: Get.height * 0.03,
+                                              ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Dialog(
+                                                        alignment: Alignment.bottomCenter,
+                                                        insetPadding: EdgeInsets.zero,
+                                                        child: Container(
+                                                          height: Get.height * 0.45,
+                                                          width: Get.width,
+                                                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.08, vertical: Get.width * 0.04),
+                                                          color: AppConstants.kAppBlack,
+                                                          child: Column(
+                                                            children: [
+                                                              Row(
+                                                                children: [
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/instagram.svg',
+                                                                    color: AppConstants.kPrimaryColor,
+                                                                    width: Get.width * 0.08,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: Get.width * 0.05,
+                                                                  ),
+                                                                  Text(
+                                                                    'İnstagram\'da paylaş',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish-SemiBold',
+                                                                      fontSize: Get.width * 0.04,
+                                                                      color: Colors.white,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: Get.height * 0.03,
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/whatsapp.svg',
+                                                                    color: AppConstants.kPrimaryColor,
+                                                                    width: Get.width * 0.08,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: Get.width * 0.05,
+                                                                  ),
+                                                                  Text(
+                                                                    'Whatsapp\'da paylaş',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish-SemiBold',
+                                                                      fontSize: Get.width * 0.04,
+                                                                      color: Colors.white,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: Get.height * 0.03,
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/twitter.svg',
+                                                                    color: AppConstants.kPrimaryColor,
+                                                                    width: Get.width * 0.08,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: Get.width * 0.05,
+                                                                  ),
+                                                                  Text(
+                                                                    'Twitter\'da paylaş',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish-SemiBold',
+                                                                      fontSize: Get.width * 0.04,
+                                                                      color: Colors.white,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: Get.height * 0.03,
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/sms.svg',
+                                                                    color: AppConstants.kPrimaryColor,
+                                                                    width: Get.width * 0.08,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: Get.width * 0.05,
+                                                                  ),
+                                                                  Text(
+                                                                    'Sms ile paylaş',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish-SemiBold',
+                                                                      fontSize: Get.width * 0.04,
+                                                                      color: Colors.white,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: Get.height * 0.03,
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/sms.svg',
+                                                                    color: AppConstants.kPrimaryColor,
+                                                                    width: Get.width * 0.08,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: Get.width * 0.05,
+                                                                  ),
+                                                                  Text(
+                                                                    'Eposta ile paylaş',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish-SemiBold',
+                                                                      fontSize: Get.width * 0.04,
+                                                                      color: Colors.white,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: Get.height * 0.03,
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/link.svg',
+                                                                    color: AppConstants.kPrimaryColor,
+                                                                    width: Get.width * 0.08,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: Get.width * 0.05,
+                                                                  ),
+                                                                  Text(
+                                                                    'Linki kopyala',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish-SemiBold',
+                                                                      fontSize: Get.width * 0.04,
+                                                                      color: Colors.white,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      'assets/icons/share.svg',
+                                                      color: AppConstants.kPrimaryColor,
+                                                      width: Get.width * 0.06,
+                                                    ),
+                                                    SizedBox(
+                                                      width: Get.width * 0.05,
+                                                    ),
+                                                    Text(
+                                                      'Paylaş',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Mulish-SemiBold',
+                                                        fontSize: Get.width * 0.04,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                           child: SvgPicture.asset(
-                            'assets/icons/3-dots.svg',
-                            color: controller.showTopBar
-                                ? Colors.white.withOpacity(0)
-                                : Colors.white.withOpacity(1),
+                            'assets/icons/more.svg',
+                            color: controller.showTopBar ? Colors.white.withOpacity(0) : Colors.white.withOpacity(1),
                           ),
                         ),
                       ),
                       Positioned(
                         right: 0,
-                        top: Get.height * 0.05 +
-                            controller.buttonPosition.clamp(0, double.infinity),
+                        top: Get.height * 0.05 + controller.buttonPosition.clamp(0, double.infinity),
                         child: Stack(
                           children: [
                             Container(
