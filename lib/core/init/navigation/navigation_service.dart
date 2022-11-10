@@ -1,6 +1,7 @@
 import 'package:flutterframework/bindings/playlist/playlist_binding.dart';
 import 'package:flutterframework/export.dart';
 import 'package:flutterframework/views/library/library_view.dart';
+import 'package:flutterframework/views/widgets/add_playlist_view.dart';
 import '../../../views/playlist/playlist_view.dart';
 
 class NavigationService {
@@ -30,6 +31,11 @@ class NavigationService {
       transitionDuration: Duration(microseconds: 0),
       name: NavigationConstants.library,
       page: () => LibraryView(),
+    ),
+    GetPage(
+      transition: Transition.cupertino,
+      name: NavigationConstants.addPlaylist,
+      page: () => AddPlaylist(),
     ),
   ];
 }

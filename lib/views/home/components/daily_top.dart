@@ -10,17 +10,15 @@ class DailyTop extends StatelessWidget {
       backgroundColor: AppConstants.kAppBlack,
       body: ListView.separated(
         physics: NeverScrollableScrollPhysics(),
-        itemCount: 10,
+        itemCount: 8,
         separatorBuilder: (context, index) {
           return SizedBox(
-            height: Get.height * 0.025,
+            height: Get.height * 0.018,
           );
         },
         itemBuilder: (context, index) {
           return SongCard(
-            index: index,
-            showCrowns: true,
-          );
+              showCrowns: false, index: index, title: 'Ebru Gündeş - Demir attım yalnızlığa', imgUrl: 'imgUrl', rate: 'rate', watch: 'watch');
         },
       ),
     );

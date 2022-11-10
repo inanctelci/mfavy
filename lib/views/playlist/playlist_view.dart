@@ -14,7 +14,7 @@ class PlaylistView extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-              vertical: Get.height * 0.06,
+              vertical: Get.height * 0.04,
             ),
             child: Column(
               children: [
@@ -50,7 +50,7 @@ class PlaylistView extends StatelessWidget {
                       children: [
                         SizedBox(height: controller.initialSize),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
+                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -97,7 +97,7 @@ class PlaylistView extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: Get.width * 0.06,
+                                    width: Get.width * 0.09,
                                   ),
                                   SvgPicture.asset('assets/icons/shuffle.svg'),
                                 ],
@@ -115,8 +115,7 @@ class PlaylistView extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return SongCard(
-                          showCrowns: false,
-                        );
+                            showCrowns: false, title: 'Ebru Gündeş - Demir attım yalnızlığa', imgUrl: 'imgUrl', rate: 'rate', watch: 'watch');
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(
@@ -134,7 +133,7 @@ class PlaylistView extends StatelessWidget {
                 duration: Duration(milliseconds: 250),
                 color: controller.showTopBar ? AppConstants.kAppGrey.withOpacity(1) : AppConstants.kAppGrey.withOpacity(0),
                 padding: EdgeInsets.symmetric(
-                  horizontal: Get.width * 0.06,
+                  horizontal: Get.width * 0.04,
                   vertical: Get.height * 0.04,
                 ),
                 child: Container(

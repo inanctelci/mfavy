@@ -10,7 +10,7 @@ class HomeHeadLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
+      padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
       height: Get.height * 0.1,
       color: AppConstants.kAppBlack,
       child: Row(
@@ -21,7 +21,7 @@ class HomeHeadLine extends StatelessWidget {
               GestureDetector(
                 onTap: onTap,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Get.width * 0.03),
+                  padding: EdgeInsets.only(right: Get.width * 0.03),
                   child: SvgPicture.asset(
                     'assets/icons/menu.svg',
                   ),

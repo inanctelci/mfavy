@@ -16,10 +16,17 @@ class TabBarWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
+          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
           child: Container(
             width: Get.width,
             height: Get.height * 0.05,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: AppConstants.kAppGrey,
+                width: 2,
+              ),
+            ),
             child: TabBar(
               controller: _tabController.controller,
               tabs: _tabController.myTabs,

@@ -1,7 +1,14 @@
 import 'package:flutter/services.dart';
 import 'package:flutterframework/export.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 
 void main() async {
+  await JustAudioBackground.init(
+    notificationColor: Color(0xFF422B73),
+    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+    androidNotificationChannelName: 'Audio playback',
+    androidNotificationOngoing: true,
+  );
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleManager.instance.preferencesInit();
   bool isDarkMode = LocaleManager.instance.getBool(PreferencesKeys.isDarkMode) ?? Get.isPlatformDarkMode;

@@ -102,30 +102,36 @@ class RatePopup extends StatelessWidget {
               SizedBox(
                 width: Get.width * 0.06,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                  Get.delete<RateController>();
-                },
-                child: Container(
-                  height: Get.height * 0.04,
-                  width: Get.width * 0.3,
-                  decoration: BoxDecoration(
-                    color: AppConstants.kPrimaryColor,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Gönder',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: Get.width * 0.04,
-                        fontFamily: 'Mulish-Bold',
+              Obx(
+                () {
+                  return GestureDetector(
+                    onTap: rateController.tappedIndex == 0
+                        ? () {}
+                        : () {
+                            Navigator.pop(context);
+                            Get.delete<RateController>();
+                          },
+                    child: Container(
+                      height: Get.height * 0.04,
+                      width: Get.width * 0.3,
+                      decoration: BoxDecoration(
+                        color: rateController.tappedIndex == 0 ? AppConstants.kHintText : AppConstants.kPrimaryColor,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Gönder',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: Get.width * 0.04,
+                            fontFamily: 'Mulish-Bold',
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
+                  );
+                },
+              )
             ],
           )
         ],
