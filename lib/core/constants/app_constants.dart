@@ -6,7 +6,7 @@ class AppConstants {
   static const String fontFamily = 'Roboto';
   static const String defaultLanguage = 'tr';
   static const int responseTimeout = 60;
-  static const Color kAppBlack = Color(0xFF252525);
+  static const Color kAppBlack = Color(0xFF161616);
   static const Color kPrimaryColor = Color(0xFFFF378E);
   static const Color kAppGrey = Color(0xFF404040);
   static const Color kBoxGrey = Color(0xFF686868);

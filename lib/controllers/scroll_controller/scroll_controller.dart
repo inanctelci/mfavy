@@ -7,6 +7,9 @@ class PlaylistScrollController extends GetxController {
   final _containerinitalHeight = (Get.height * 0.31).obs;
   final _imageOpacity = 1.0.obs;
   final _showTopBar = false.obs;
+  final _isSearching = false.obs;
+  final _textController = TextEditingController().obs;
+  final _shuffle = false.obs;
 
   ScrollController controller = ScrollController();
 
@@ -27,6 +30,15 @@ class PlaylistScrollController extends GetxController {
 
   get showTopBar => _showTopBar.value;
   set showTopBar(value) => _showTopBar.value = value;
+
+  get isSearching => _isSearching.value;
+  set isSearching(value) => _isSearching.value = value;
+
+  get textController => _textController.value;
+  set textController(value) => _textController.value = value;
+
+  get shuffle => _shuffle.value;
+  set shuffle(value) => _shuffle.value = value;
 
   void onInit() {
     calcButtonPosition();

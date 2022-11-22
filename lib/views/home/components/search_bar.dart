@@ -3,7 +3,7 @@ import 'package:flutterframework/export.dart';
 import 'package:youtube_api/youtube_api.dart';
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({
+  SearchBar({
     Key? key,
   }) : super(key: key);
 
@@ -13,28 +13,25 @@ class SearchBar extends StatelessWidget {
     final TextEditingController textController = _searchController.textController;
     FocusNode _focusNode = FocusNode();
 
-    // List<YouTubeVideo> videoResult;
-    // YoutubeAPI youtube = YoutubeAPI("AIzaSyDZaGEqRJiRKB-8dCwX2lQbSeLn_5qMvHo");
+    bool typing = false;
+    final String key = 'AIzaSyCHkfkg1Un-Mp6Epkhiq8dECYj8VRedHFY';
+    String header = "What are You looking for?";
 
-    // Future<void> callAPI() async {
-    //   videoResult = await youtube.search(
-    //     _searchController.textController.text,
-    //     order: 'relevance',
-    //     videoDuration: 'any',
-    //   );
-    //   videoResult = await youtube.nextPage();
-    //   print('titleeeeee ' + videoResult[0].title);
-    // }
+    YoutubeAPI youtube = YoutubeAPI("AIzaSyDbQjkg1U7VlxN9WN1Mgtky4JCAEz7fMGo");
+    List<YouTubeVideo> videoResult = [];
 
-    // Future<void> getTrends() async {
-    //   videoResult = await youtube.getTrends(
-    //     regionCode: 'TR',
-    //   );
-    //   print(videoResult[0].title);
-    //   videoResult.map((e) {
-    //     _searchController.videoResults = e;
-    //   });
-    // }
+    Future<void> callAPI() async {
+      _searchController.isAPIworking = true;
+      print('treu oldu =>>>>>>>> ' + _searchController.isAPIworking.toString());
+      videoResult = await youtube.search(
+        _searchController.textController.text,
+        order: 'relevance',
+        videoDuration: 'any',
+      );
+      _searchController.videoResults = videoResult;
+      _searchController.isAPIworking = false;
+      print('false oldu =>>>>>>>> ' + _searchController.isAPIworking.toString());
+    }
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
@@ -98,7 +95,7 @@ class SearchBar extends StatelessWidget {
                 return _searchController.isSearching
                     ? GestureDetector(
                         onTap: () {
-                          // callAPI();
+                          callAPI();
                         },
                         child: Padding(
                           padding: EdgeInsets.all(Get.width * 0.04),

@@ -22,22 +22,24 @@ class TabBarWidget extends StatelessWidget {
             height: Get.height * 0.05,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                color: AppConstants.kAppGrey,
-                width: 2,
-              ),
+              color: AppConstants.kAppGrey,
             ),
             child: TabBar(
               controller: _tabController.controller,
               tabs: _tabController.myTabs,
+              padding: EdgeInsets.zero,
+              indicatorWeight: 0,
               indicator: BoxDecoration(
-                color: AppConstants.kAppGrey,
+                color: AppConstants.kPrimaryColor,
                 borderRadius: BorderRadius.circular(4),
               ),
               labelStyle: TextStyle(
                 fontFamily: 'Mulish-ExtraBold',
                 fontSize: 12,
               ),
+              onTap: ((value) {
+                _tabController.index.value = value;
+              }),
             ),
           ),
         ),
@@ -46,7 +48,7 @@ class TabBarWidget extends StatelessWidget {
         ),
         Container(
           width: Get.width,
-          height: Get.height * 1.6,
+          height: Get.height * 10 * 0.17,
           child: TabBarView(
             controller: _tabController.controller,
             children: [DailyTop(), WeeklyTop(), MonthlyTop()],

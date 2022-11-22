@@ -2,8 +2,10 @@ import 'package:audio_session/audio_session.dart';
 import 'package:flutterframework/controllers/home_search/home_search_controller.dart';
 import 'package:flutterframework/export.dart';
 import 'package:flutterframework/views/home/components/search_view.dart';
+import 'package:flutterframework/views/widgets/ad_widget.dart';
 import 'package:flutterframework/views/widgets/bottom_nav_bar.dart';
 import 'package:flutterframework/views/widgets/main_drawer.dart';
+import 'package:flutterframework/views/widgets/mini_player.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 
@@ -69,7 +71,7 @@ class HomeView extends StatelessWidget {
               ),
               Obx(() {
                 return _searchController.isSearching
-                    ? SizedBox()
+                    ? SearchView()
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -91,12 +93,14 @@ class HomeView extends StatelessWidget {
                         ],
                       );
               }),
-              // ControlButtons(_player),
+              AdWidget(),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
+      floatingActionButton: MiniPlayer(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
     );
   }
 }

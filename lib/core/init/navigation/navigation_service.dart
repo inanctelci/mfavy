@@ -1,3 +1,4 @@
+import 'package:flutterframework/bindings/library/library_binding.dart';
 import 'package:flutterframework/bindings/playlist/playlist_binding.dart';
 import 'package:flutterframework/export.dart';
 import 'package:flutterframework/views/library/library_view.dart';
@@ -24,13 +25,14 @@ class NavigationService {
     GetPage(
       transition: Transition.cupertino,
       name: NavigationConstants.playlist,
-      page: () => const PlaylistView(),
+      page: () => PlaylistView(),
       binding: PlaylistBinding(),
     ),
     GetPage(
       transitionDuration: Duration(microseconds: 0),
       name: NavigationConstants.library,
       page: () => LibraryView(),
+      binding: LibraryBinding(),
     ),
     GetPage(
       transition: Transition.cupertino,

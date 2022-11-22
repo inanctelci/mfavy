@@ -27,11 +27,16 @@ dependencies:
   just_audio: ^0.9.30
   just_audio_background: ^0.0.1-beta.7
   audio_session: ^0.1.10
+  shimmer: ^2.0.0
+  youtube_player_flutter: ^8.1.1
+  anim_search_bar: ^2.0.2
+  video_player: ^2.4.7
+  flutter_native_splash: ^2.2.14
 
-flutter_icons:
-  image_path: "assets/logo/music.png"
+flutter_native_splash:
+  color: "#252525"
+  image: assets/images/music.png
   android: true
-  ios: true
 
 dev_dependencies:
   flutter_test:
@@ -70,3 +75,9 @@ flutter:
     - family: Yeseva-One
       fonts:
         - asset: assets/fonts/yeseva_one/YesevaOne-Regular.ttf
+    - family: Gvtime
+      fonts:
+        - asset: assets/fonts/gvtime/GvtimeRegular.otf
+    - family: Christmas
+      fonts:
+        - asset: assets/fonts/christmas_wish/ChristmasWish-Calligraphy.otf

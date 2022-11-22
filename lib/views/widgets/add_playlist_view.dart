@@ -212,44 +212,50 @@ class AddPlaylist extends StatelessWidget {
               child: ListView.separated(
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return PlaylistWidget(
-                    onTap: () {
-                      Get.back();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Container(
-                            height: Get.height * 0.05,
-                            width: Get.width,
-                            decoration: BoxDecoration(
-                              color: AppConstants.kAppBlack,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset('assets/icons/like.svg'),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    'Şarkı, Çalma Listesine başarıyla eklendi',
-                                    style: TextStyle(
-                                      fontFamily: 'Mulish-ExtraBold',
-                                      color: Colors.white,
-                                      fontSize: Get.width * 0.03,
+                  return Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Get.width * 0.04,
+                    ),
+                    child: PlaylistWidget(
+                      isGrid: false,
+                      onTap: () {
+                        Get.back();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Container(
+                              height: Get.height * 0.05,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                color: AppConstants.kAppBlack,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset('assets/icons/like.svg'),
+                                    SizedBox(
+                                      width: 5,
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      'Şarkı, Çalma Listesine başarıyla eklendi',
+                                      style: TextStyle(
+                                        fontFamily: 'Mulish-ExtraBold',
+                                        color: Colors.white,
+                                        fontSize: Get.width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                            behavior: SnackBarBehavior.floating,
                           ),
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                          behavior: SnackBarBehavior.floating,
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) {

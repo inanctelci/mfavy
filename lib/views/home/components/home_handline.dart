@@ -22,8 +22,9 @@ class HomeHeadLine extends StatelessWidget {
                 onTap: onTap,
                 child: Padding(
                   padding: EdgeInsets.only(right: Get.width * 0.03),
-                  child: SvgPicture.asset(
-                    'assets/icons/menu.svg',
+                  child: Icon(
+                    Icons.menu_rounded,
+                    color: AppConstants.kPrimaryColor,
                   ),
                 ),
               ),
@@ -31,8 +32,8 @@ class HomeHeadLine extends StatelessWidget {
                 'MFavy'.tr,
                 style: TextStyle(
                   color: AppConstants.kPrimaryColor,
-                  fontFamily: 'Yeseva-One',
-                  fontSize: 32,
+                  fontFamily: 'Gvtime',
+                  fontSize: Get.width * 0.11,
                 ),
               ),
             ],
@@ -51,22 +52,35 @@ class HomeHeadLine extends StatelessWidget {
                 },
               );
             },
-            child: Row(
-              children: [
-                SvgPicture.asset('assets/icons/ads.svg'),
-                SizedBox(
-                  width: 5,
+            child: Container(
+              width: Get.width * 0.4,
+              height: Get.height * 0.04,
+              decoration: BoxDecoration(
+                color: AppConstants.kPrimaryColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/ads.svg',
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: Get.width * 0.01,
+                    ),
+                    Text(
+                      'Reklamları Kaldır',
+                      style: TextStyle(
+                        fontFamily: 'Mulish-ExtraBold',
+                        color: Colors.white,
+                        fontSize: Get.width * 0.03,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Reklam\nİstemiyorum',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppConstants.kPrimaryColor,
-                    fontFamily: 'Mulish-Semibold',
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ],

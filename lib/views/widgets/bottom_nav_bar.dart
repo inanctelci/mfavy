@@ -1,5 +1,6 @@
 import 'package:flutterframework/controllers/navigation_bar/navigation_bar_controller.dart';
 import 'package:flutterframework/export.dart';
+import 'package:flutterframework/views/widgets/mini_player.dart';
 
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Color(0xFF252525),
+      color: Colors.transparent,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

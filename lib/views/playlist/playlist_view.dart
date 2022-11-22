@@ -3,11 +3,14 @@ import 'package:flutterframework/export.dart';
 import 'package:flutterframework/views/widgets/song_card.dart';
 
 class PlaylistView extends StatelessWidget {
-  const PlaylistView({Key? key}) : super(key: key);
+  PlaylistView({Key? key}) : super(key: key);
+
+  FocusNode _node = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     PlaylistScrollController controller = Get.find();
+    var _textController = controller.textController as TextEditingController;
     return Scaffold(
       backgroundColor: AppConstants.kAppBlack,
       body: Stack(
@@ -70,36 +73,76 @@ class PlaylistView extends StatelessWidget {
                                   Container(
                                     height: Get.height * 0.06,
                                     width: Get.width * 0.5,
-                                    decoration: BoxDecoration(
-                                      color: AppConstants.kAppGrey,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        SizedBox(
-                                          width: Get.width * 0.04,
+                                    child: Obx(() {
+                                      return TextFormField(
+                                        controller: _textController,
+                                        focusNode: _node,
+                                        cursorColor: Colors.white,
+                                        style: TextStyle(
+                                          fontFamily: 'Mulish-Medium',
+                                          color: Colors.white,
                                         ),
-                                        SvgPicture.asset(
-                                          'assets/icons/search.svg',
-                                          width: Get.width * 0.05,
-                                        ),
-                                        SizedBox(
-                                          width: Get.width * 0.02,
-                                        ),
-                                        Text(
-                                          'Ara',
-                                          style: TextStyle(
+                                        onTap: () {
+                                          _node.requestFocus();
+                                          controller.isSearching = true;
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: 'Ara',
+                                          hintStyle: TextStyle(
                                             color: AppConstants.kHintText,
-                                            fontSize: Get.width * 0.04,
+                                            fontFamily: 'Mulish-SemiBold',
+                                          ),
+                                          filled: true,
+                                          fillColor: AppConstants.kAppGrey,
+                                          contentPadding: EdgeInsets.all(1),
+                                          prefixIcon: Padding(
+                                            padding: EdgeInsets.all(Get.width * 0.04),
+                                            child: SvgPicture.asset(
+                                              'assets/icons/search.svg',
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          suffixIcon: controller.isSearching
+                                              ? GestureDetector(
+                                                  onTap: () {
+                                                    _textController.clear();
+                                                    _node.unfocus();
+                                                    controller.isSearching = false;
+                                                  },
+                                                  child: Icon(
+                                                    Icons.close_rounded,
+                                                    color: Colors.white,
+                                                  ),
+                                                )
+                                              : SizedBox(),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(8),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(8),
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      );
+                                    }),
                                   ),
                                   SizedBox(
                                     width: Get.width * 0.09,
                                   ),
-                                  SvgPicture.asset('assets/icons/shuffle.svg'),
+                                  GestureDetector(
+                                    onTap: () {
+                                      controller.shuffle = !controller.shuffle;
+                                    },
+                                    child: Obx(() {
+                                      return SvgPicture.asset(
+                                        'assets/icons/shuffle.svg',
+                                        color: controller.shuffle ? AppConstants.kPrimaryColor : AppConstants.kHintText,
+                                      );
+                                    }),
+                                  ),
                                 ],
                               ),
                             ],
@@ -115,7 +158,29 @@ class PlaylistView extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return SongCard(
-                            showCrowns: false, title: 'Ebru Gündeş - Demir attım yalnızlığa', imgUrl: 'imgUrl', rate: 'rate', watch: 'watch');
+                          showCrowns: false,
+                          title: 'Ebru Gündeş - Demir attım yalnızlığa',
+                          videoId: 'feQhHStBVLE',
+                          widget: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: Get.height * 0.125,
+                              width: Get.width * 0.32,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5d7NQxPsQYQ18rSwd5t5vzMFl6rggWgSGTTpZ_8N_WA&s'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5d7NQxPsQYQ18rSwd5t5vzMFl6rggWgSGTTpZ_8N_WA&s',
+                          rate: 'rate',
+                          watch: 'watch',
+                        );
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(
@@ -188,25 +253,68 @@ class PlaylistView extends StatelessWidget {
                                           color: AppConstants.kAppBlack,
                                           child: Column(
                                             children: [
-                                              Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/icons/trash.svg',
-                                                    color: AppConstants.kPrimaryColor,
-                                                    width: Get.width * 0.06,
-                                                  ),
-                                                  SizedBox(
-                                                    width: Get.width * 0.05,
-                                                  ),
-                                                  Text(
-                                                    'Çalma listesini sil',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Mulish-SemiBold',
-                                                      fontSize: Get.width * 0.04,
-                                                      color: Colors.white,
+                                              GestureDetector(
+                                                onTap: () {
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(
+                                                      content: Container(
+                                                        height: Get.height * 0.05,
+                                                        width: Get.width,
+                                                        decoration: BoxDecoration(
+                                                          color: AppConstants.kAppGrey.withOpacity(0.8),
+                                                          borderRadius: BorderRadius.circular(4),
+                                                        ),
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: Row(
+                                                            children: [
+                                                              SvgPicture.asset(
+                                                                'assets/icons/trash.svg',
+                                                                color: Colors.redAccent,
+                                                              ),
+                                                              SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Text(
+                                                                'Çalma Listesi Silindi.',
+                                                                style: TextStyle(
+                                                                  fontFamily: 'Mulish-ExtraBold',
+                                                                  color: Colors.white,
+                                                                  fontSize: Get.width * 0.03,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      backgroundColor: Colors.transparent,
+                                                      elevation: 0,
+                                                      behavior: SnackBarBehavior.floating,
                                                     ),
-                                                  ),
-                                                ],
+                                                  );
+                                                  Get.back();
+                                                  Get.back();
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      'assets/icons/trash.svg',
+                                                      color: AppConstants.kPrimaryColor,
+                                                      width: Get.width * 0.06,
+                                                    ),
+                                                    SizedBox(
+                                                      width: Get.width * 0.05,
+                                                    ),
+                                                    Text(
+                                                      'Çalma listesini sil',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Mulish-SemiBold',
+                                                        fontSize: Get.width * 0.04,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: Get.height * 0.03,
@@ -408,16 +516,42 @@ class PlaylistView extends StatelessWidget {
                         top: Get.height * 0.05 + controller.buttonPosition.clamp(0, double.infinity),
                         child: Stack(
                           children: [
-                            Container(
-                              width: Get.width * 0.15,
-                              height: Get.width * 0.15,
+                            Align(
                               alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppConstants.kPrimaryColor,
+                              child: Container(
+                                width: Get.width * 0.15,
+                                height: Get.width * 0.15,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppConstants.kPrimaryColor,
+                                ),
+                                child: SvgPicture.asset('assets/icons/play.svg'),
                               ),
-                              child: SvgPicture.asset('assets/icons/play.svg'),
                             ),
+                            controller.shuffle
+                                ? Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Container(
+                                      width: Get.width * 0.05,
+                                      height: Get.width * 0.05,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppConstants.kPrimaryColor,
+                                        border: Border.all(
+                                          color: AppConstants.kAppBlack,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(
+                                          'assets/icons/shuffle.svg',
+                                          color: Colors.white,
+                                          width: Get.width * 0.035,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : SizedBox(),
                           ],
                         ),
                       )

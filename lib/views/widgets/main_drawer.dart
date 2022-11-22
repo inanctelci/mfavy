@@ -1,4 +1,6 @@
 import 'package:flutterframework/export.dart';
+import 'package:flutterframework/views/home/components/test.dart';
+import 'package:flutterframework/views/widgets/mini_player.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -93,6 +95,133 @@ class MainDrawer extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: Get.height * 0.025,
+            ),
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(context, MaterialPageRoute(
+            //       builder: (context) {
+            //         return MiniPlayer();
+            //       },
+            //     ));
+            //   },
+            //   child: Row(
+            //     children: [
+            //       Icon(
+            //         Icons.e_mobiledata,
+            //         color: Colors.white,
+            //       ),
+            //       SizedBox(
+            //         width: Get.width * 0.03,
+            //       ),
+            //       Text(
+            //         'Test',
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //           fontFamily: 'Mulish-Bold',
+            //           fontSize: Get.width * 0.035,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: Get.height * 0.025,
+            // ),
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(context, MaterialPageRoute(
+            //       builder: (context) {
+            //         return HomeView();
+            //       },
+            //     ));
+            //   },
+            //   child: Row(
+            //     children: [
+            //       Icon(
+            //         Icons.e_mobiledata,
+            //         color: Colors.white,
+            //       ),
+            //       SizedBox(
+            //         width: Get.width * 0.03,
+            //       ),
+            //       Text(
+            //         'Home 1',
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //           fontFamily: 'Mulish-Bold',
+            //           fontSize: Get.width * 0.035,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: Get.height * 0.025,
+            // ),
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(context, MaterialPageRoute(
+            //       builder: (context) {
+            //         return HomeTwoView();
+            //       },
+            //     ));
+            //   },
+            //   child: Row(
+            //     children: [
+            //       Icon(
+            //         Icons.e_mobiledata,
+            //         color: Colors.white,
+            //       ),
+            //       SizedBox(
+            //         width: Get.width * 0.03,
+            //       ),
+            //       Text(
+            //         'Home 2',
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //           fontFamily: 'Mulish-Bold',
+            //           fontSize: Get.width * 0.035,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: Get.height * 0.025,
+            // ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return Test();
+                  },
+                ));
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.e_mobiledata,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: Get.width * 0.03,
+                  ),
+                  Text(
+                    'Test',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Mulish-Bold',
+                      fontSize: Get.width * 0.035,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: Get.height * 0.025,
             ),
           ],
         ),
