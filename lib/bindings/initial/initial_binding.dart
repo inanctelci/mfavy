@@ -1,4 +1,6 @@
+import 'package:flutterframework/controllers/onboard/onboard_controller.dart';
 import 'package:flutterframework/export.dart';
+
 class InitialBinding implements Bindings {
   @override
   void dependencies() {

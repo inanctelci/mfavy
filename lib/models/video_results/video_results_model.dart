@@ -36,17 +36,17 @@ class VideoResulstModel {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['kind'] = kind;
-    _data['id'] = id;
-    _data['channelTitle'] = channelTitle;
-    _data['title'] = title;
-    _data['description'] = description;
-    _data['publishedAt'] = publishedAt;
-    _data['channelId'] = channelId;
-    _data['thumbnails'] = thumbnails;
-    _data['channelurl'] = channelurl;
-    _data['url'] = url;
-    return _data;
+    final data = <String, dynamic>{};
+    data['kind'] = kind;
+    data['id'] = id;
+    data['channelTitle'] = channelTitle;
+    data['title'] = title;
+    data['description'] = description;
+    data['publishedAt'] = publishedAt;
+    data['channelId'] = channelId;
+    data['thumbnails'] = thumbnails;
+    data['channelurl'] = channelurl;
+    data['url'] = url;
+    return data;
   }
 }

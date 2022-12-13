@@ -10,7 +10,7 @@ class WeeklyTop extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppConstants.kAppBlack,
       body: ListView.separated(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 10,
         separatorBuilder: (context, index) {
           return Column(
@@ -39,8 +39,6 @@ class WeeklyTop extends StatelessWidget {
             title: 'Ebru Gündeş - Demir attım yalnızlığa',
             videoId: 'feQhHStBVLE',
             imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5d7NQxPsQYQ18rSwd5t5vzMFl6rggWgSGTTpZ_8N_WA&s',
-            rate: 'rate',
-            watch: 'watch',
             widget: Image.network(
               'https://iasbh.tmgrup.com.tr/19c8c8/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2021/09/19/1632038198585.jpg&mw=600&l=1',
               fit: BoxFit.cover,
@@ -78,7 +76,7 @@ class WeeklyTop extends StatelessWidget {
         return Center(
           child: Text(
             (index + 1).toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Mulish-ExtraBold',
               fontSize: 14,
               color: Colors.white,

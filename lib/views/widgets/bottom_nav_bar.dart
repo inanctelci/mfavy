@@ -1,10 +1,9 @@
 import 'package:flutterframework/controllers/navigation_bar/navigation_bar_controller.dart';
 import 'package:flutterframework/export.dart';
-import 'package:flutterframework/views/widgets/mini_player.dart';
 
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({Key? key}) : super(key: key);
-  NavigationBarController _controller = Get.find();
+  final NavigationBarController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +13,8 @@ class BottomNavBar extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF252525).withOpacity(0.31),
-              Color(0xFF252525),
+              const Color(0xFF252525).withOpacity(0.31),
+              const Color(0xFF252525),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -33,7 +32,7 @@ class BottomNavBar extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     _controller.currentIndex = 0;
-                    Get.toNamed(NavigationConstants.home);
+                    // Get.toNamed(NavigationConstants.home);
                   },
                   child: Obx(
                     () {
@@ -50,7 +49,7 @@ class BottomNavBar extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     _controller.currentIndex = 1;
-                    Get.toNamed(NavigationConstants.library);
+                    // Get.toNamed(NavigationConstants.library);
                   },
                   child: Obx(
                     () {

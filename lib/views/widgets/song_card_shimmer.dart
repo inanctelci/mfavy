@@ -1,10 +1,8 @@
-import 'package:flutterframework/controllers/rate_controller/rate_controller.dart';
 import 'package:flutterframework/export.dart';
-import 'package:flutterframework/views/widgets/rate_popup.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SongCardShimmer extends StatelessWidget {
-  SongCardShimmer({
+  const SongCardShimmer({
     Key? key,
   }) : super(key: key);
 
@@ -36,7 +34,7 @@ class SongCardShimmer extends StatelessWidget {
               SizedBox(
                 width: Get.width * 0.02,
               ),
-              Container(
+              SizedBox(
                 height: Get.height * 0.125,
                 width: Get.width * 0.54,
                 child: Column(
@@ -58,7 +56,7 @@ class SongCardShimmer extends StatelessWidget {
                               width: Get.width * 0.1,
                               color: AppConstants.kBoxGrey,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Container(
@@ -78,7 +76,7 @@ class SongCardShimmer extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Container(
@@ -89,7 +87,7 @@ class SongCardShimmer extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Container(

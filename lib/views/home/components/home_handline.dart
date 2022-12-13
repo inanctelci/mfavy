@@ -22,7 +22,7 @@ class HomeHeadLine extends StatelessWidget {
                 onTap: onTap,
                 child: Padding(
                   padding: EdgeInsets.only(right: Get.width * 0.03),
-                  child: Icon(
+                  child: const Icon(
                     Icons.menu_rounded,
                     color: AppConstants.kPrimaryColor,
                   ),
@@ -43,7 +43,7 @@ class HomeHeadLine extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return Dialog(
+                  return const Dialog(
                     insetAnimationCurve: Curves.ease,
                     insetPadding: EdgeInsets.zero,
                     alignment: Alignment.bottomCenter,
@@ -103,7 +103,7 @@ class RemoveAds extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
+          const Text(
             'Reklamları Kaldır',
             style: TextStyle(
               fontFamily: 'Mulish-ExtraBold',
@@ -125,7 +125,7 @@ class RemoveAds extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+              children: const [
                 Text(
                   'Reklamsız (1 AYLIK)',
                   style: TextStyle(
@@ -165,7 +165,7 @@ class RemoveAds extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
+                const Text(
                   'Reklamsız (1 YILLIK)',
                   style: TextStyle(
                     fontFamily: 'Mulish-ExtraBold',
@@ -173,7 +173,7 @@ class RemoveAds extends StatelessWidget {
                     color: AppConstants.kAppBlack,
                   ),
                 ),
-                Text(
+                const Text(
                   '₺49,99',
                   style: TextStyle(
                     fontFamily: 'Mulish-ExtraBold',
@@ -182,7 +182,7 @@ class RemoveAds extends StatelessWidget {
                   ),
                 ),
                 RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                   children: [
                     TextSpan(
                       text: '1',

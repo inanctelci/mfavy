@@ -5,4 +5,7 @@ class NavigationConstants {
   static const connectionError = "/connectionError";
   static const library = "/library";
   static const addPlaylist = "/addPlaylist";
+  static const navigation = "/navigation";
+  static const contact = "/contact";
+  static const onboard = "/onboard";
 }

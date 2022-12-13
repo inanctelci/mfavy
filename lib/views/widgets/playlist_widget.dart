@@ -1,18 +1,23 @@
 import 'package:flutterframework/export.dart';
 
-class PlaylistWidget extends StatelessWidget {
-  const PlaylistWidget({
+class LibraryListItem extends StatelessWidget {
+  const LibraryListItem({
     Key? key,
     required this.onTap,
     required this.isGrid,
+    required this.title,
+    required this.imgUrl,
   }) : super(key: key);
 
   final VoidCallback onTap;
   final bool isGrid;
+  final String title;
+  final String imgUrl;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      //h 36 w 42
       onTap: onTap,
       child: isGrid
           ? Column(
@@ -21,11 +26,10 @@ class PlaylistWidget extends StatelessWidget {
                 Container(
                   height: Get.width * 0.36,
                   width: Get.width * 0.42,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/ebrugundes.png',
-                      ),
+                  color: Colors.transparent,
+                  child: ClipRRect(
+                    child: Image.network(
+                      imgUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -34,7 +38,7 @@ class PlaylistWidget extends StatelessWidget {
                   height: Get.height * 0.01,
                 ),
                 Text(
-                  'Türkçe Pop Listem',
+                  title,
                   style: TextStyle(
                     fontFamily: 'Mulish-SemiBold',
                     fontSize: Get.width * 0.03,
@@ -45,66 +49,23 @@ class PlaylistWidget extends StatelessWidget {
             )
           : Row(
               children: [
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: Get.width * 0.1,
-                          width: Get.width * 0.1,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/ebrugundes.png',
-                              ),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: Get.width * 0.1,
-                          width: Get.width * 0.1,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/ebrugundes.png'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
+                Container(
+                  height: Get.width * 0.2,
+                  width: Get.width * 0.2,
+                  color: Colors.transparent,
+                  child: ClipRRect(
+                    child: Image.network(
+                      imgUrl,
+                      fit: BoxFit.cover,
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          height: Get.width * 0.1,
-                          width: Get.width * 0.1,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/ebrugundes.png'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: Get.width * 0.1,
-                          width: Get.width * 0.1,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/ebrugundes.png'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(
                   width: Get.width * 0.04,
                 ),
                 Text(
-                  'Türkçe Pop Listem',
-                  style: TextStyle(
+                  title,
+                  style: const TextStyle(
                     fontFamily: 'Mulish-Medium',
                     color: Colors.white,
                     fontSize: 16,

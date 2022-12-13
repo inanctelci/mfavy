@@ -1,0 +1,534 @@
+{
+  "success": 1,
+  "datas": [
+    {
+      "data": [
+        {
+          "id": 1,
+          "listName": "Türkçe Pop",
+          "lastListened": "2022-12-02T07:03:00.898Z",
+          "thumbnail": "https://i.scdn.co/image/ab67706f00000003cddef9968c6492786ed0697c",
+          "createdAt": "2022-12-01T14:34:49.667Z",
+          "musics": [
+            {
+              "createdAt": "2022-12-02T07:03:45.207Z",
+              "music": {
+                "id": 1,
+                "songName": "Gazapizm & Melike Şahin - Olur Mu?",
+                "yMusicID": "mw0_NiA2tx4",
+                "thumbnail": "https://i.ytimg.com/vi/mw0_NiA2tx4/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDlOoN32kmt34Y64Ky_xkTCXn4yHg",
+                "viewCount": 5,
+                "total_rate": "5161",
+                "myrate": 3
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:49.303Z",
+              "music": {
+                "id": 2,
+                "songName": "Kurtuluş Kuş & Burak Bulut - Denedim Deme",
+                "yMusicID": "CQkOgBU4MPs",
+                "thumbnail": "https://i.ytimg.com/vi/CQkOgBU4MPs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDSdXNartjR30WgMuUOMZK4MziBJg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:51.766Z",
+              "music": {
+                "id": 3,
+                "songName": "Ara - Zeynep Bastık (Paro Official ZB Version) | Music Video",
+                "yMusicID": "zU2_jPxz9q4",
+                "thumbnail": "https://i.ytimg.com/vi/zU2_jPxz9q4/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDOFAiQN8f4uqDz_RSZG-UkYkVUnw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 1
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:52.766Z",
+              "music": {
+                "id": 4,
+                "songName": "Tuğçe Kandemir - Kaybet",
+                "yMusicID": "hvSITu5SdmQ",
+                "thumbnail": "https://i.ytimg.com/vi/hvSITu5SdmQ/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAIErqAgwvFPN201GhOaWK7HnIOqQ",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:53.766Z",
+              "music": {
+                "id": 5,
+                "songName": "Burak Bulut & Kurtuluş Kuş & İrem Derici - Alev Alev",
+                "yMusicID": "1OReZsEfxrI",
+                "thumbnail": "https://i.ytimg.com/vi/1OReZsEfxrI/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLA0Vt5erC3S8iaxLTRio5LPDMfS3Q",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 4
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:54.766Z",
+              "music": {
+                "id": 6,
+                "songName": "Soner Sarıkabadayı - Kendileri (Official Video)",
+                "yMusicID": "5KEKEAHeYig",
+                "thumbnail": "https://i.ytimg.com/vi/5KEKEAHeYig/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDiPqxoHhW4MBM52M_DjbVOAK1MxQ",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:55.766Z",
+              "music": {
+                "id": 7,
+                "songName": "Mustafa Ceceli & Indira Elemes - İlla",
+                "yMusicID": "vHIf_Gk8GLg",
+                "thumbnail": "https://i.ytimg.com/vi/vHIf_Gk8GLg/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAbMmVGKvtr5eVp3Zh8T8vfPz7Tkg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:56.766Z",
+              "music": {
+                "id": 8,
+                "songName": "Hande Ünsal - Sen Yokken",
+                "yMusicID": "V5vC9gQdzNw",
+                "thumbnail": "https://i.ytimg.com/vi/V5vC9gQdzNw/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLD-Ny9aPDjHNKY8fKackT3gxufsOw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:57.766Z",
+              "music": {
+                "id": 9,
+                "songName": "Buray - Girdap",
+                "yMusicID": "mG7Abmn04fI",
+                "thumbnail": "https://i.ytimg.com/vi/mG7Abmn04fI/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDSrtAYTtBOEW6NL7wXCeI-ZiwyGg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:58.766Z",
+              "music": {
+                "id": 10,
+                "songName": "MOTİVE - 10 MG ︻デ═一",
+                "yMusicID": "2RAbPC9aKQ0",
+                "thumbnail": "https://i.ytimg.com/vi/2RAbPC9aKQ0/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLB1RFcsc7hsdl8DIjKPVGyQzJN1Gw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "listName": "Türkçe Rap",
+          "lastListened": "2022-12-02T07:03:00.898Z",
+          "thumbnail": "https://i.scdn.co/image/ab67706f00000003f6e364c9795d0ec5001a20e7",
+          "createdAt": "2022-12-01T14:34:49.667Z",
+          "musics": [
+            {
+              "createdAt": "2022-12-02T07:03:45.207Z",
+              "music": {
+                "id": 1,
+                "songName": "Semicenk - Herkes Gibisin",
+                "yMusicID": "GfTBpCuu6yI",
+                "thumbnail": "https://i.ytimg.com/vi/GfTBpCuu6yI/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAT-lU3zFNeKrg1XcM8vi28FdHo_A",
+                "viewCount": 5,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:49.303Z",
+              "music": {
+                "id": 2,
+                "songName": "Ayaz Erdoğan - Hep Mi Ben?",
+                "yMusicID": "cGYr_WHuLcs",
+                "thumbnail": "https://i.ytimg.com/vi/cGYr_WHuLcs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLA5XdKJuviV-MGpwqi3PLXdP0wUgg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 2
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:51.766Z",
+              "music": {
+                "id": 3,
+                "songName": "Gazapizm & Melike Şahin - Olur Mu?",
+                "yMusicID": "mw0_NiA2tx4",
+                "thumbnail": "https://i.ytimg.com/vi/mw0_NiA2tx4/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDlOoN32kmt34Y64Ky_xkTCXn4yHg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:52.766Z",
+              "music": {
+                "id": 4,
+                "songName": "Tekir - Ağlaya Ağlaya [Official Video] #chillebesk",
+                "yMusicID": "RIWRpLwko6Q",
+                "thumbnail": "https://i.ytimg.com/vi/RIWRpLwko6Q/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLA2_HZgORU7bcPL4iU3Yh5n9qanUQ ",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:53.766Z",
+              "music": {
+                "id": 5,
+                "songName": "ElMusto - Aksiyon",
+                "yMusicID": "5ZpLC2opzAI",
+                "thumbnail": "https://i.ytimg.com/vi/5ZpLC2opzAI/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCsamve16ccKtYlnvcCl8rS8IjciQ",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 5
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:54.766Z",
+              "music": {
+                "id": 6,
+                "songName": "UZI - SENIN UGRUNA FT MAVI",
+                "yMusicID": "IqTyfYDhIoc",
+                "thumbnail": "https://i.ytimg.com/vi/IqTyfYDhIoc/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCTJ1YvcZxAfpeuoxknfUygoP1-zA",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:55.766Z",
+              "music": {
+                "id": 7,
+                "songName": "Norm Ender - Bu Düş Çok Güzel",
+                "yMusicID": "k-jH9aijNLE",
+                "thumbnail": "https://i.ytimg.com/vi/k-jH9aijNLE/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAisnrHI3qDSi1857P0xTdZGfb5Bg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:56.766Z",
+              "music": {
+                "id": 8,
+                "songName": "Hande Ünsal - Sen Yokken",
+                "yMusicID": "V5vC9gQdzNw",
+                "thumbnail": "https://i.ytimg.com/vi/V5vC9gQdzNw/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLD-Ny9aPDjHNKY8fKackT3gxufsOw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:57.766Z",
+              "music": {
+                "id": 9,
+                "songName": "MERO feat. Murda - Konum Gizli (prod. by Spanker)",
+                "yMusicID": "cWwSBq3zlWw",
+                "thumbnail": "https://i.ytimg.com/vi/cWwSBq3zlWw/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCz2ijyTmRXQVuXoSRvY_H1N-CY6w",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 4
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:58.766Z",
+              "music": {
+                "id": 10,
+                "songName": "LVBEL C5 - GELMEZSEN GELME",
+                "yMusicID": "IKxbsLhCVA8",
+                "thumbnail": "https://i.ytimg.com/vi/IKxbsLhCVA8/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAtKgUrC3HOCgIn7K_5YWpy7kz7WQ",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "listName": "Türkçe Akustik",
+          "lastListened": "2022-12-02T07:03:00.898Z",
+          "thumbnail": "https://i.ytimg.com/vi/3sN-DKevBuE/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLA_haqGu5QsL9joBqmT_yWZTlzGEw",
+          "createdAt": "2022-12-01T14:34:49.667Z",
+          "musics": [
+            {
+              "createdAt": "2022-12-02T07:03:45.207Z",
+              "music": {
+                "id": 1,
+                "songName": "Felaket (Akustik) - Zeynep Bastık",
+                "yMusicID": "3sN-DKevBuE",
+                "thumbnail": "https://i.ytimg.com/vi/3sN-DKevBuE/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLA_haqGu5QsL9joBqmT_yWZTlzGEw",
+                "viewCount": 5,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:49.303Z",
+              "music": {
+                "id": 2,
+                "songName": "No.1 - Dünya Gül Bana (Düet Heja) | Official Video #SiyahBayrak",
+                "yMusicID": "LU5FrAKJmYQ",
+                "thumbnail": "https://i.ytimg.com/vi/LU5FrAKJmYQ/hqdefault.jpg?sqp=-oaymwE8CKgBEF5IWvKriqkDLwgBFQAAAAAYASUAAMhCPQCAokN4AfABAfgB1AaAAuADigIMCAAQARhGIGUoYzAP&rs=AOn4CLCgS25rAE8eEVP-jGAV7jNXDMaS_Q",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:51.766Z",
+              "music": {
+                "id": 3,
+                "songName": "Ara - Zeynep Bastık (Paro Official ZB Version) | Music Video",
+                "yMusicID": "zU2_jPxz9q4",
+                "thumbnail": "https://i.ytimg.com/vi/zU2_jPxz9q4/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDOFAiQN8f4uqDz_RSZG-UkYkVUnw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 1
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:52.766Z",
+              "music": {
+                "id": 4,
+                "songName": "maNga - Dursun Zaman",
+                "yMusicID": "FVY4be1yFFY",
+                "thumbnail": "https://i.ytimg.com/vi/FVY4be1yFFY/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLC-gnf_4IDh3x4x7SE3zU7s47XtXg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:53.766Z",
+              "music": {
+                "id": 5,
+                "songName": "Zeynep Bastık, Anıl Piyancı - Bırakman Doğru Mu (Official Video)",
+                "yMusicID": "BOn3Tu2vfS0",
+                "thumbnail": "https://i.ytimg.com/vi/BOn3Tu2vfS0/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDzCwvY_nhOkymTPqoVxYhs-pD1WA",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:54.766Z",
+              "music": {
+                "id": 6,
+                "songName": "Yol (Akustik) - Zeynep Bastık",
+                "yMusicID": "KXY6O7xx4fY",
+                "thumbnail": "https://i.ytimg.com/vi/KXY6O7xx4fY/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDDqUEtXjnJtAQdiHnCYbXk-KV1kg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 5
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:55.766Z",
+              "music": {
+                "id": 7,
+                "songName": "Yanımda Kal (Akustik) - Zeynep Bastık",
+                "yMusicID": "swQuWwnSCrE",
+                "thumbnail": "https://i.ytimg.com/vi/swQuWwnSCrE/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDKlEbMO8_UmhgtMdnrnbX_wzWJog",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:56.766Z",
+              "music": {
+                "id": 8,
+                "songName": "No.1 - Hiç Işık Yok (feat. Melek Mosso) #SiyahBayrak",
+                "yMusicID": "5PnEC4__CyM",
+                "thumbnail": "https://i.ytimg.com/vi/5PnEC4__CyM/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBtNQIRUrqoxq84luEZethtB6mzXw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 3
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:57.766Z",
+              "music": {
+                "id": 9,
+                "songName": "Yokluğunda (Leyla The Band)",
+                "yMusicID": "mG7Abmn04fI",
+                "thumbnail": "https://i.ytimg.com/vi/49Kh1mS4Fhs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAv_PNMeWJFlC0Dhv76Ane__61OsA",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:58.766Z",
+              "music": {
+                "id": 10,
+                "songName": "Son Feci Bisiklet - Bikinisinde Astronomi",
+                "yMusicID": "49Kh1mS4Fhs",
+                "thumbnail": "https://i.ytimg.com/vi/49Kh1mS4Fhs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAv_PNMeWJFlC0Dhv76Ane__61OsA",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "listName": "Yabancı Rap",
+          "lastListened": "2022-12-02T07:03:00.898Z",
+          "thumbnail": "https://i.ytimg.com/vi/uLHqpjW3aDs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCyDRRKC-GbBEpjAzSga6YfOUKCdA",
+          "createdAt": "2022-12-01T14:34:49.667Z",
+          "musics": [
+            {
+              "createdAt": "2022-12-02T07:03:45.207Z",
+              "music": {
+                "id": 1,
+                "songName": "Roddy Ricch - The Box [Official Audio]",
+                "yMusicID": "uLHqpjW3aDs",
+                "thumbnail": "https://i.ytimg.com/vi/uLHqpjW3aDs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCyDRRKC-GbBEpjAzSga6YfOUKCdA",
+                "viewCount": 5,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:49.303Z",
+              "music": {
+                "id": 2,
+                "songName": "Future - Life Is Good (Official Music Video) ft. Drake",
+                "yMusicID": "l0U7SxXHkPY",
+                "thumbnail": "https://i.ytimg.com/vi/l0U7SxXHkPY/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAjl5kWKSmLUJtpOMIgN492KgMW9A",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 1
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:51.766Z",
+              "music": {
+                "id": 3,
+                "songName": "Sleepy Rose - Woo [Official Music Video]",
+                "yMusicID": "rWYTsy-630c",
+                "thumbnail": "https://i.ytimg.com/vi/rWYTsy-630c/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCIV0pyX4q8JWJdH7TvTmm1lGmSsg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:52.766Z",
+              "music": {
+                "id": 4,
+                "songName": "POP SMOKE - DREAMING (Official Lyric Video)",
+                "yMusicID": "U-z6z_7Xt9A",
+                "thumbnail": "https://i.ytimg.com/vi/U-z6z_7Xt9A/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAtFKPcVOSuMd2CX120NLusvR7ypw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 1
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:53.766Z",
+              "music": {
+                "id": 5,
+                "songName": "Polo G, Stunna 4 Vegas & NLE Choppa feat. Mike WiLL Made-It - Go Stupid (Official Video)",
+                "yMusicID": "PEEoaKwwxbg",
+                "thumbnail": "https://i.ytimg.com/vi/PEEoaKwwxbg/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLC1RcaJskaQPyuRVfaxn4glvu35QQ",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:54.766Z",
+              "music": {
+                "id": 6,
+                "songName": "YBN Nahmir - 2 Seater (feat. G Eazy & Offset) [Official Music Video]",
+                "yMusicID": "5KEKEAHeYig",
+                "thumbnail": "https://i.ytimg.com/vi/DUkHh0GmSa8/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAjpKXdPu40ebHowQgkpvH4mYnTmg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 2
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:55.766Z",
+              "music": {
+                "id": 7,
+                "songName": "DaniLeigh - Levi High ft. DaBaby (Official Video)",
+                "yMusicID": "chqs92fhilA",
+                "thumbnail": "https://i.ytimg.com/vi/chqs92fhilA/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCTPGdg1tpv_3Vxs7sx8VjeFNIpaA",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:56.766Z",
+              "music": {
+                "id": 8,
+                "songName": "DaniLeigh - Cravin ft. G-Eazy (Official Video)",
+                "yMusicID": "_jqEqmc35yk",
+                "thumbnail": "https://i.ytimg.com/vi/_jqEqmc35yk/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDbKBRxdooNDuBdeoOaYV4c5ZPzRw",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:57.766Z",
+              "music": {
+                "id": 9,
+                "songName": "Haroinfather - Forever | (Ferrari GT3 458)",
+                "yMusicID": "9GDnSQswwjM",
+                "thumbnail": "https://i.ytimg.com/vi/9GDnSQswwjM/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAcYTNsSp3jBYhSFMEECDX4oAgMGg",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            },
+            {
+              "createdAt": "2022-12-02T07:03:58.766Z",
+              "music": {
+                "id": 10,
+                "songName": "BlocBoy JB - Swervin (Official Music Video)",
+                "yMusicID": "jUktXB5GZJw",
+                "thumbnail": "https://i.ytimg.com/vi/jUktXB5GZJw/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAU62vdI9jcxjA8jNmSzH9oSgQW8A",
+                "viewCount": 1,
+                "total_rate": "5161",
+                "myrate": 0
+              }
+            }
+          ]
+        }
+      ],
+      "pagination": {
+        "total_records": 3,
+        "total_perpage": 10,
+        "total_page": 1,
+        "current_page": 1,
+        "next_page": null,
+        "previous_page": null
+      }
+    }
+  ],
+  "message": "listMusic Successfully"
+}

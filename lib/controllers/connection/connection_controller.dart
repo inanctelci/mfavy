@@ -1,4 +1,5 @@
-import 'package:flutterframework/export.dart';
+import '../../export.dart';
+
 class ConnectionController extends GetxController {
   Connectivity connectivity = Connectivity();
 
@@ -19,9 +20,27 @@ class ConnectionController extends GetxController {
   checkConnection() async {
     ConnectivityResult result = await connectivity.checkConnectivity();
     if (result != ConnectivityResult.none) {
-      Get.offAllNamed(NavigationConstants.home);
+      Get.offAllNamed(NavigationConstants.navigation);
     } else {
-      Get.snackbar('ConnectionError'.tr, 'YouAreNotConnectedToTheInternet'.tr, backgroundColor: Colors.black.withOpacity(0.5));
+      Get.snackbar(
+        'İnternet Bağlantısı Yok',
+        'Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz'.tr,
+        titleText: Text(
+          'İnternet Bağlantısı yok',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Mulish-ExtraBold',
+          ),
+        ),
+        messageText: Text(
+          'Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Mulish-SemiBold',
+          ),
+        ),
+        backgroundColor: AppConstants.kBoxGrey,
+      );
     }
   }
 }

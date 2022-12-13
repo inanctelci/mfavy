@@ -1,6 +1,5 @@
 import 'package:flutterframework/export.dart';
 import 'package:flutterframework/views/widgets/song_card.dart';
-import 'package:http/http.dart';
 
 class MonthlyTop extends StatelessWidget {
   const MonthlyTop({Key? key}) : super(key: key);
@@ -10,7 +9,7 @@ class MonthlyTop extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppConstants.kAppBlack,
       body: ListView.separated(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 10,
         separatorBuilder: (context, index) {
           return Column(
@@ -39,8 +38,6 @@ class MonthlyTop extends StatelessWidget {
             title: 'Ebru Gündeş - Demir attım yalnızlığa',
             videoId: 'feQhHStBVLE',
             imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5d7NQxPsQYQ18rSwd5t5vzMFl6rggWgSGTTpZ_8N_WA&s',
-            rate: 'rate',
-            watch: 'watch',
             widget: Image.network(
               'https://iasbh.tmgrup.com.tr/19c8c8/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2021/09/19/1632038198585.jpg&mw=600&l=1',
               fit: BoxFit.cover,

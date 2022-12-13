@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import '../../export.dart';
 
 class PlaylistScrollController extends GetxController {
   final _imageSize = (Get.height * 0.25).obs;
@@ -9,12 +9,19 @@ class PlaylistScrollController extends GetxController {
   final _showTopBar = false.obs;
   final _isSearching = false.obs;
   final _textController = TextEditingController().obs;
-  final _shuffle = false.obs;
+  final _tappedSongIndex = (-1).obs;
+  final _tappedVideoIndex = (-1).obs;
 
   ScrollController controller = ScrollController();
 
   get imageSize => _imageSize.value;
   set imageSize(value) => _imageSize.value = value;
+
+  get tappedSongIndex => _tappedSongIndex.value;
+  set tappedSongIndex(value) => _tappedSongIndex.value = value;
+
+  get tappedVideoIndex => _tappedVideoIndex.value;
+  set tappedVideoIndex(value) => _tappedVideoIndex.value = value;
 
   get initialSize => _initialSize.value;
   set initialSize(value) => _initialSize.value = value;
@@ -37,9 +44,7 @@ class PlaylistScrollController extends GetxController {
   get textController => _textController.value;
   set textController(value) => _textController.value = value;
 
-  get shuffle => _shuffle.value;
-  set shuffle(value) => _shuffle.value = value;
-
+  @override
   void onInit() {
     calcButtonPosition();
     super.onInit();

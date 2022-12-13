@@ -1,242 +1,273 @@
-import 'package:flutterframework/controllers/rate_controller/rate_controller.dart';
-import 'package:flutterframework/export.dart';
-import 'package:flutterframework/views/widgets/rate_popup.dart';
-import 'package:flutterframework/views/widgets/youtube_video_player.dart';
+import 'package:html_character_entities/html_character_entities.dart';
+
+import '../../export.dart';
 
 class SongCard extends StatelessWidget {
-  SongCard({
+  const SongCard({
     Key? key,
     this.index,
     required this.showCrowns,
     required this.title,
-    this.rate,
-    required this.watch,
+    this.myRate,
     required this.videoId,
     required this.imgUrl,
     required this.widget,
     this.onTap,
+    this.totalRate,
+    this.viewCount,
+    this.ratePopup,
+    this.playButton,
+    this.backGroundIndicator,
   }) : super(key: key);
 
-  int? index;
+  final int? index;
   final bool showCrowns;
   final String title;
-  String? rate;
-  final String watch;
+  final String? myRate;
+  final String? totalRate;
+  final String? viewCount;
   final String videoId;
   final String imgUrl;
   final Widget widget;
-  VoidCallback? onTap;
+  final VoidCallback? onTap;
+  final Widget? ratePopup;
+  final Widget? playButton;
+  final Widget? backGroundIndicator;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Stack(children: [
-                Container(
-                  height: Get.height * 0.125,
-                  width: Get.width * 0.32,
-                  decoration: BoxDecoration(
-                    color: AppConstants.kAppBlack,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(4), child: widget),
-                ),
-                index == 0 || index == 1 || index == 2
-                    ? SvgPicture.asset(
-                        index == 0
-                            ? 'assets/icons/medal-gold.svg'
-                            : index == 1
-                                ? 'assets/icons/medal-silver.svg'
-                                : index == 2
-                                    ? 'assets/icons/medal-bronze.svg'
-                                    : '',
-                        width: Get.width * 0.08,
-                      )
-                    : const SizedBox(),
-              ]),
-              SizedBox(
-                width: Get.width * 0.02,
-              ),
-              Container(
-                height: Get.height * 0.125,
-                width: Get.width * 0.54,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: Get.height * 0.054,
-                      child: RichText(
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: title,
-                              style: TextStyle(fontFamily: 'Mulish-SemiBold', fontSize: Get.width * 0.035),
+    return SizedBox(
+      height: Get.height * 0.15,
+      child: Stack(children: [
+        Align(
+          alignment: Alignment.center,
+          child: backGroundIndicator ?? SizedBox(),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
+            child: SizedBox(
+              height: Get.height * 0.125,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Stack(children: [
+                        Container(
+                          height: Get.height * 0.125,
+                          width: Get.width * 0.32,
+                          decoration: BoxDecoration(
+                            color: AppConstants.kAppBlack,
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(
+                              width: 2,
+                              color: AppConstants.kHintText,
                             ),
-                          ],
+                          ),
+                          child: ClipRRect(borderRadius: BorderRadius.circular(4), child: widget),
                         ),
+                        index == 0 || index == 1 || index == 2
+                            ? SvgPicture.asset(
+                                index == 0
+                                    ? 'assets/icons/medal-gold.svg'
+                                    : index == 1
+                                        ? 'assets/icons/medal-silver.svg'
+                                        : index == 2
+                                            ? 'assets/icons/medal-bronze.svg'
+                                            : '',
+                                width: Get.width * 0.08,
+                              )
+                            : const SizedBox(),
+                      ]),
+                      SizedBox(
+                        width: Get.width * 0.02,
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
+                      SizedBox(
+                        height: Get.height * 0.125,
+                        width: Get.width * 0.54,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/star.svg',
-                                  height: Get.height * 0.018,
-                                  color: AppConstants.kStarYellow,
-                                ),
-                                SizedBox(
-                                  width: Get.width * 0.005,
-                                ),
-                                Text(
-                                  '120K',
-                                  style: TextStyle(fontFamily: 'Mulish-SemiBold', color: Colors.white, fontSize: Get.width * 0.03),
-                                ),
-                              ],
-                            ),
                             SizedBox(
-                              height: 5,
+                              height: Get.height * 0.054,
+                              child: RichText(
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: HtmlCharacterEntities.decode(title),
+                                      style: TextStyle(fontFamily: 'Mulish-SemiBold', fontSize: Get.width * 0.035),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SvgPicture.asset(
-                                  'assets/icons/eye.svg',
-                                  height: Get.height * 0.02,
-                                  color: AppConstants.kPrimaryColor,
-                                ),
-                                SizedBox(
-                                  width: Get.width * 0.005,
-                                ),
-                                Text(
-                                  '120K',
-                                  style: TextStyle(
-                                    fontFamily: 'Mulish-SemiBold',
-                                    color: Colors.white,
-                                    fontSize: Get.width * 0.03,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return Dialog(
-                                      backgroundColor: Colors.transparent,
-                                      child: RatePopup(),
-                                    );
-                                  },
-                                  barrierDismissible: false,
-                                );
-                              },
-                              child: rate == null
-                                  ? Container(
-                                      height: Get.width * 0.1,
-                                      width: Get.width * 0.1,
-                                      decoration: BoxDecoration(
-                                        color: AppConstants.kBoxGrey,
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(
-                                          Get.width * 0.015,
-                                        ),
-                                        child: SvgPicture.asset(
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
                                           'assets/icons/star.svg',
+                                          height: Get.height * 0.018,
+                                          color: AppConstants.kStarYellow,
                                         ),
-                                      ))
-                                  : Container(
-                                      height: Get.width * 0.1,
-                                      width: Get.width * 0.1,
-                                      decoration: BoxDecoration(
-                                        color: AppConstants.kStarYellow,
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          rate!,
+                                        SizedBox(
+                                          width: Get.width * 0.005,
+                                        ),
+                                        Text(
+                                          totalRate ?? '0',
+                                          style: TextStyle(fontFamily: 'Mulish-SemiBold', color: Colors.white, fontSize: Get.width * 0.035),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/icons/eye.svg',
+                                          height: Get.height * 0.02,
+                                          color: AppConstants.kPrimaryColor,
+                                        ),
+                                        SizedBox(
+                                          width: Get.width * 0.005,
+                                        ),
+                                        Text(
+                                          viewCount ?? '0',
                                           style: TextStyle(
+                                            fontFamily: 'Mulish-SemiBold',
                                             color: Colors.white,
-                                            fontFamily: 'Mulish-ExtraBold',
-                                            fontSize: Get.width * 0.08,
+                                            fontSize: Get.width * 0.035,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return ratePopup ?? const SizedBox();
+                                          },
+                                          barrierDismissible: false,
+                                        );
+                                      },
+                                      child: myRate == null
+                                          ? Container(
+                                              height: Get.width * 0.1,
+                                              width: Get.width * 0.1,
+                                              decoration: BoxDecoration(
+                                                color: AppConstants.kBoxGrey,
+                                                borderRadius: BorderRadius.circular(8),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(
+                                                  Get.width * 0.015,
+                                                ),
+                                                child: SvgPicture.asset(
+                                                  'assets/icons/star.svg',
+                                                ),
+                                              ),
+                                            )
+                                          : Container(
+                                              height: Get.width * 0.1,
+                                              width: Get.width * 0.1,
+                                              decoration: BoxDecoration(
+                                                color: AppConstants.kBoxGrey,
+                                                borderRadius: BorderRadius.circular(8),
+                                                border: Border.all(
+                                                  color: AppConstants.kStarYellow,
+                                                  width: 4,
+                                                ),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(
+                                                  Get.width * 0.015,
+                                                ),
+                                                child: SvgPicture.asset(
+                                                  'assets/icons/star.svg',
+                                                  color: AppConstants.kStarYellow,
+                                                ),
+                                              ),
+                                            ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed(NavigationConstants.addPlaylist);
+                                      },
+                                      child: Container(
+                                        height: Get.width * 0.1,
+                                        width: Get.width * 0.1,
+                                        decoration: BoxDecoration(
+                                          color: AppConstants.kBoxGrey,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(
+                                            Get.width * 0.015,
+                                          ),
+                                          child: SvgPicture.asset(
+                                            'assets/icons/music-square-add.svg',
                                           ),
                                         ),
                                       ),
                                     ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Get.toNamed(NavigationConstants.addPlaylist);
-                              },
-                              child: Container(
-                                height: Get.width * 0.1,
-                                width: Get.width * 0.1,
-                                decoration: BoxDecoration(
-                                  color: AppConstants.kBoxGrey,
-                                  borderRadius: BorderRadius.circular(8),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    GestureDetector(
+                                      onTap: onTap ?? () {},
+                                      child: Container(
+                                        height: Get.width * 0.1,
+                                        width: Get.width * 0.1,
+                                        decoration: BoxDecoration(
+                                          color: AppConstants.kBoxGrey,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(
+                                            Get.width * 0.025,
+                                          ),
+                                          child: playButton ??
+                                              SvgPicture.asset(
+                                                'assets/icons/play.svg',
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(
-                                    Get.width * 0.015,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    'assets/icons/music-square-add.svg',
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            GestureDetector(
-                              onTap: onTap == null ? () {} : onTap,
-                              child: Container(
-                                height: Get.width * 0.1,
-                                width: Get.width * 0.1,
-                                decoration: BoxDecoration(
-                                  color: AppConstants.kBoxGrey,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(
-                                    Get.width * 0.015,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    'assets/icons/play.svg',
-                                  ),
-                                ),
-                              ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ]),
     );
   }
 
@@ -267,7 +298,7 @@ class SongCard extends StatelessWidget {
         return Center(
           child: Text(
             (index + 1).toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Mulish-ExtraBold',
               fontSize: 14,
               color: Colors.white,

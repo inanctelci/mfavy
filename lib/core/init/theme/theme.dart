@@ -1,4 +1,5 @@
-import 'package:flutterframework/export.dart';
+import '../../../export.dart';
+
 class AppTheme {
   static final AppTheme _instance = AppTheme._init();
   static AppTheme get instance => _instance;
@@ -8,7 +9,7 @@ class AppTheme {
   ThemeData get lightTheme => ThemeData(
         colorScheme: const ColorScheme.light(),
         fontFamily: AppConstants.fontFamily,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: AppConstants.kAppBlack,
       );
 
   ThemeData get darkTheme => ThemeData(

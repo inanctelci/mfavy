@@ -1,35 +1,60 @@
-import 'package:flutterframework/export.dart';
-import 'package:flutterframework/models/mp3/mp3_model.dart';
-import 'package:flutterframework/services/user/mp3_converter_service.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Test extends StatefulWidget {
-  const Test({Key? key}) : super(key: key);
+  Test({super.key});
 
   @override
   State<Test> createState() => _TestState();
 }
 
-class _TestState extends State<Test> {
+class _TestState extends State<Test> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    void initState() {
+      super.initState();
+      controller = AnimationController(
+        duration: const Duration(seconds: 1),
+        vsync: this,
+      );
+    }
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
-      body: FutureBuilder<Mp3Model>(
-        future: Mp3Service().getMp3('WaaEs2Pq9VA'),
-        builder: (context, snapshot) {
-          print(snapshot.data!.youtubeAPI);
-          return Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  snapshot.data!.youtubeAPI.toString(),
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
+      body: Center(
+        child: Dismissible(
+          key: UniqueKey(),
+          direction: DismissDirection.horizontal,
+          resizeDuration: const Duration(milliseconds: 200),
+          onResize: () {
+            print('Widget resized in direction: ');
+          },
+          onDismissed: (direction) {
+            setState(() {});
+          },
+          child: AnimatedSwitcher(
+            reverseDuration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 500),
+            transitionBuilder: (child, animation) => FadeTransition(
+              opacity: animation,
+              child: child,
             ),
-          );
-        },
+            child: Text(
+              'Swipeable Text',
+              key: UniqueKey(),
+              style: const TextStyle(
+                fontSize: 24.0,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,5 +1,3 @@
-import 'package:flutterframework/models/mp3/mp3_model.dart';
-
 class Mp3Model {
   Mp3Model({
     required this.guid,
@@ -70,21 +68,21 @@ class YoutubeAPI {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['definizione'] = definizione;
-    _data['contatore_visualizzazioni'] = contatoreVisualizzazioni;
-    _data['descrizione'] = descrizione;
-    _data['titolo'] = titolo;
-    _data['data_pubblicazione'] = dataPubblicazione;
-    _data['thumbUrl'] = thumbUrl;
-    _data['licenza'] = licenza;
-    _data['durata_video'] = durataVideo;
-    _data['duration_original'] = durationOriginal;
-    _data['counter'] = counter;
-    _data['paesi'] = paesi;
-    _data['urlMp3'] = urlMp3;
-    _data['urlVideo'] = urlVideo;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['definizione'] = definizione;
+    data['contatore_visualizzazioni'] = contatoreVisualizzazioni;
+    data['descrizione'] = descrizione;
+    data['titolo'] = titolo;
+    data['data_pubblicazione'] = dataPubblicazione;
+    data['thumbUrl'] = thumbUrl;
+    data['licenza'] = licenza;
+    data['durata_video'] = durataVideo;
+    data['duration_original'] = durationOriginal;
+    data['counter'] = counter;
+    data['paesi'] = paesi;
+    data['urlMp3'] = urlMp3;
+    data['urlVideo'] = urlVideo;
+    return data;
   }
 }

@@ -1,14 +1,12 @@
 import 'package:flutterframework/export.dart';
-import 'package:flutterframework/models/video_results/video_results_model.dart';
-import 'package:youtube_api/youtube_api.dart';
 
 class HomeSearchController extends GetxController {
-  RxBool _isSearching = false.obs;
-  RxBool _isTypeing = false.obs;
+  final RxBool _isSearching = false.obs;
+  final RxBool _isTypeing = false.obs;
   TextEditingController textController = TextEditingController();
-  RxBool _isAPIworking = false.obs;
-  RxList _videoResult = [].obs;
-  RxInt _tappedIndex = (-1).obs;
+  final RxBool _isAPIworking = false.obs;
+  final RxList _videoResult = [].obs;
+  final RxInt _tappedIndex = (-1).obs;
 
   get isSearching => _isSearching.value;
   set isSearching(value) => _isSearching.value = value;

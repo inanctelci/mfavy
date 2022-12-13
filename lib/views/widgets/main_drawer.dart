@@ -1,6 +1,9 @@
+import 'package:flutterframework/controllers/library/library_controller.dart';
 import 'package:flutterframework/export.dart';
+import 'package:flutterframework/views/contact/contact_view.dart';
 import 'package:flutterframework/views/home/components/test.dart';
-import 'package:flutterframework/views/widgets/mini_player.dart';
+import 'package:flutterframework/views/navigation/navigation_view.dart';
+import 'package:share_plus/share_plus.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -30,25 +33,30 @@ class MainDrawer extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.05,
             ),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/share.svg',
-                  color: Colors.white,
-                  width: Get.width * 0.08,
-                ),
-                SizedBox(
-                  width: Get.width * 0.03,
-                ),
-                Text(
-                  'Uygulamayı paylaş',
-                  style: TextStyle(
+            GestureDetector(
+              onTap: () {
+                Share.share('check out my website https://example.com');
+              },
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/share.svg',
                     color: Colors.white,
-                    fontFamily: 'Mulish-Bold',
-                    fontSize: Get.width * 0.035,
+                    width: Get.width * 0.08,
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: Get.width * 0.03,
+                  ),
+                  Text(
+                    'Uygulamayı paylaş',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Mulish-Bold',
+                      fontSize: Get.width * 0.035,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: Get.height * 0.025,
@@ -76,60 +84,34 @@ class MainDrawer extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.025,
             ),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/mail.svg',
-                  color: Colors.white,
-                  width: Get.width * 0.08,
-                ),
-                SizedBox(
-                  width: Get.width * 0.03,
-                ),
-                Text(
-                  'İletişim',
-                  style: TextStyle(
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(NavigationConstants.contact);
+              },
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/mail.svg',
                     color: Colors.white,
-                    fontFamily: 'Mulish-Bold',
-                    fontSize: Get.width * 0.035,
+                    width: Get.width * 0.08,
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: Get.width * 0.03,
+                  ),
+                  Text(
+                    'İletişim',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Mulish-Bold',
+                      fontSize: Get.width * 0.035,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: Get.height * 0.025,
             ),
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(context, MaterialPageRoute(
-            //       builder: (context) {
-            //         return MiniPlayer();
-            //       },
-            //     ));
-            //   },
-            //   child: Row(
-            //     children: [
-            //       Icon(
-            //         Icons.e_mobiledata,
-            //         color: Colors.white,
-            //       ),
-            //       SizedBox(
-            //         width: Get.width * 0.03,
-            //       ),
-            //       Text(
-            //         'Test',
-            //         style: TextStyle(
-            //           color: Colors.white,
-            //           fontFamily: 'Mulish-Bold',
-            //           fontSize: Get.width * 0.035,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: Get.height * 0.025,
-            // ),
             // GestureDetector(
             //   onTap: () {
             //     Navigator.push(context, MaterialPageRoute(
@@ -192,37 +174,37 @@ class MainDrawer extends StatelessWidget {
             // SizedBox(
             //   height: Get.height * 0.025,
             // ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return Test();
-                  },
-                ));
-              },
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.e_mobiledata,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: Get.width * 0.03,
-                  ),
-                  Text(
-                    'Test',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Mulish-Bold',
-                      fontSize: Get.width * 0.035,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: Get.height * 0.025,
-            ),
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(context, MaterialPageRoute(
+            //       builder: (context) {
+            //         return NavigationView();
+            //       },
+            //     ));
+            //   },
+            //   child: Row(
+            //     children: [
+            //       const Icon(
+            //         Icons.e_mobiledata,
+            //         color: Colors.white,
+            //       ),
+            //       SizedBox(
+            //         width: Get.width * 0.03,
+            //       ),
+            //       Text(
+            //         'Test',
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //           fontFamily: 'Mulish-Bold',
+            //           fontSize: Get.width * 0.035,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: Get.height * 0.025,
+            // ),
           ],
         ),
       ),

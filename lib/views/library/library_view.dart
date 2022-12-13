@@ -1,91 +1,152 @@
-import 'package:flutterframework/controllers/library/library_controller.dart';
-import 'package:flutterframework/views/widgets/bottom_nav_bar.dart';
-import 'package:anim_search_bar/anim_search_bar.dart';
-
+import '../../controllers/library/library_controller.dart';
 import '../../export.dart';
+import '../../models/music_list/music_list_model.dart';
+import '../../services/user/list_service.dart';
+import '../playlist/playlist_view.dart';
 import '../widgets/playlist_widget.dart';
 
 class LibraryView extends StatelessWidget {
   LibraryView({Key? key}) : super(key: key);
 
-  LibraryController _controller = Get.find();
-  FocusNode _node = FocusNode();
+  LibraryController libraryController = Get.find<LibraryController>();
 
   @override
   Widget build(BuildContext context) {
+    PageController pageController = libraryController.pageController;
     return Scaffold(
       backgroundColor: AppConstants.kAppBlack,
-      body: SafeArea(
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: [
+          LibraryPage(),
+          PlaylistView(
+            onTapBack: () {
+              pageController.animateToPage(0, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+            },
+            listID: libraryController.tappedIndex,
+          ),
+        ],
+      ),
+      // bottomNavigationBar: Column(
+      //   mainAxisSize: MainAxisSize.min,
+      //   children: [
+      //     MiniPlayer(),
+      //     BottomNavBar(),
+      //   ],
+      // ),
+    );
+  }
+}
+
+class LibraryPage extends StatelessWidget {
+  LibraryPage({
+    Key? key,
+  }) : super(key: key);
+
+  final LibraryController _controller = Get.find();
+  final FocusNode _node = FocusNode();
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.fromSwatch(
+            accentColor: Colors.white,
+          ),
+        ),
         child: SingleChildScrollView(
-          child: Obx(() {
-            return Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: Get.height * 0.04,
-                ),
-                _controller.isSearching
-                    ? PlaylistSearchBar(
-                        node: _node,
-                      )
-                    : Column(
-                        children: [
-                          PlaylistHeadLine(
-                            node: _node,
-                          ),
-                          SizedBox(
-                            height: Get.height * 0.04,
-                          ),
-                          PlaylistViewOptions(),
-                        ],
-                      ),
-                SizedBox(
-                  height: Get.height * 0.04,
-                ),
-                Obx(() {
-                  return Container(
-                      height: (Get.height * 0.22) * 12,
-                      width: Get.width * 0.92,
-                      child: _controller.isGridTapped
-                          ? GridView.extent(
-                              childAspectRatio: 1,
-                              physics: NeverScrollableScrollPhysics(),
-                              maxCrossAxisExtent: Get.width * 0.5,
-                              mainAxisSpacing: Get.height * 0.06,
-                              crossAxisSpacing: Get.width * 0.08,
-                              children: List.generate(
-                                10,
-                                (index) => PlaylistWidget(
-                                    onTap: () {
-                                      Get.toNamed(NavigationConstants.playlist);
-                                    },
-                                    isGrid: true),
-                              ),
-                            )
-                          : ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return PlaylistWidget(
-                                  isGrid: false,
-                                  onTap: () {
-                                    Get.toNamed(NavigationConstants.playlist);
-                                  },
-                                );
-                              },
-                              separatorBuilder: (context, index) {
+          child: FutureBuilder<MusicListModel>(
+            future: ListService().getList(context),
+            builder: (context, snapshot) {
+              return snapshot.hasData
+                  ? Obx(
+                      () {
+                        return Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: Get.height * 0.04,
+                            ),
+                            _controller.isSearching
+                                ? PlaylistSearchBar(
+                                    node: _node,
+                                  )
+                                : Column(
+                                    children: [
+                                      PlaylistHeadLine(
+                                        node: _node,
+                                      ),
+                                      SizedBox(
+                                        height: Get.height * 0.04,
+                                      ),
+                                      PlaylistViewOptions(),
+                                    ],
+                                  ),
+                            SizedBox(
+                              height: Get.height * 0.04,
+                            ),
+                            Obx(
+                              () {
                                 return SizedBox(
-                                  height: Get.height * 0.02,
+                                  height: (Get.height * 0.22) * snapshot.data!.datas[0].data.length,
+                                  width: Get.width * 0.92,
+                                  child: _controller.isGridTapped
+                                      ? GridView.extent(
+                                          childAspectRatio: 1,
+                                          physics: const NeverScrollableScrollPhysics(),
+                                          maxCrossAxisExtent: Get.width * 0.5,
+                                          mainAxisSpacing: Get.height * 0.06,
+                                          crossAxisSpacing: Get.width * 0.08,
+                                          children: List.generate(
+                                            snapshot.data!.datas[0].data.length,
+                                            (index) => LibraryListItem(
+                                              onTap: () {
+                                                _controller.tappedIndex = index;
+                                                _controller.pageController
+                                                    .animateToPage(1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+                                              },
+                                              isGrid: true,
+                                              imgUrl: snapshot.data!.datas[0].data[index].thumbnail,
+                                              title: snapshot.data!.datas[0].data[index].listName,
+                                            ),
+                                          ),
+                                        )
+                                      : ListView.separated(
+                                          physics: const NeverScrollableScrollPhysics(),
+                                          itemBuilder: (context, index) {
+                                            return LibraryListItem(
+                                              onTap: () {
+                                                _controller.tappedIndex = index;
+                                                print(_controller.tappedIndex);
+                                                _controller.pageController
+                                                    .animateToPage(1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+                                              },
+                                              isGrid: false,
+                                              imgUrl: snapshot.data!.datas[0].data[index].thumbnail,
+                                              title: snapshot.data!.datas[0].data[index].listName,
+                                            );
+                                          },
+                                          separatorBuilder: (context, index) {
+                                            return SizedBox(
+                                              height: Get.height * 0.02,
+                                            );
+                                          },
+                                          itemCount: snapshot.data!.datas[0].data.length,
+                                        ),
                                 );
                               },
-                              itemCount: 12,
-                            ));
-                }),
-              ],
-            );
-          }),
+                            ),
+                          ],
+                        );
+                      },
+                    )
+                  : CircularProgressIndicator();
+            },
+          ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
@@ -95,7 +156,7 @@ class PlaylistViewOptions extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  LibraryController _controller = Get.find();
+  final LibraryController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -118,14 +179,13 @@ class PlaylistViewOptions extends StatelessWidget {
                   value: _controller.sortBy,
                   borderRadius: BorderRadius.circular(4),
                   elevation: 0,
-                  underline: SizedBox(),
-                  icon: SizedBox(),
-                  style: TextStyle(color: Colors.white),
+                  underline: const SizedBox(),
+                  icon: const SizedBox(),
+                  style: const TextStyle(color: Colors.white),
                   dropdownColor: AppConstants.kBoxGrey,
                   items: <String>[
-                    'En Yakın Tarihli',
                     'En Son Dinlenen',
-                    'En Yeni eklenen',
+                    'En Yeni Oluşturulan',
                     'Alfabetik',
                   ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
@@ -176,13 +236,13 @@ class PlaylistHeadLine extends StatelessWidget {
     required this.node,
   }) : super(key: key);
 
-  LibraryController _controller = Get.find();
+  final LibraryController _controller = Get.find();
   final FocusNode node;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04),
-      child: Container(
+      child: SizedBox(
         height: Get.height * 0.03,
         child: Stack(
           children: [
@@ -202,7 +262,7 @@ class PlaylistHeadLine extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   GestureDetector(
@@ -211,6 +271,7 @@ class PlaylistHeadLine extends StatelessWidget {
                         context: context,
                         builder: (context) {
                           return Dialog(
+                            backgroundColor: Colors.transparent,
                             child: Container(
                               width: Get.width,
                               height: Get.height * 0.2,
@@ -245,7 +306,7 @@ class PlaylistHeadLine extends StatelessWidget {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        focusedBorder: const UnderlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Colors.white,
                                           ),
@@ -299,7 +360,7 @@ class PlaylistHeadLine extends StatelessWidget {
                                                   child: Row(
                                                     children: [
                                                       SvgPicture.asset('assets/icons/like.svg'),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         width: 5,
                                                       ),
                                                       Text(
@@ -357,7 +418,7 @@ class PlaylistHeadLine extends StatelessWidget {
                 ],
               ),
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Listelerim',
@@ -378,8 +439,8 @@ class PlaylistHeadLine extends StatelessWidget {
 class PlaylistSearchBar extends StatelessWidget {
   PlaylistSearchBar({Key? key, required this.node}) : super(key: key);
 
-  TextEditingController _textContoller = TextEditingController();
-  LibraryController _controller = Get.find();
+  final TextEditingController _textContoller = TextEditingController();
+  final LibraryController _controller = Get.find();
   final FocusNode node;
 
   @override
@@ -393,7 +454,7 @@ class PlaylistSearchBar extends StatelessWidget {
           focusNode: node,
           controller: _textContoller,
           cursorColor: Colors.white,
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'Mulish-Medium',
             color: Colors.white,
           ),
@@ -410,7 +471,7 @@ class PlaylistSearchBar extends StatelessWidget {
               onTap: () {
                 _controller.isSearching = false;
               },
-              child: Icon(
+              child: const Icon(
                 Icons.close_rounded,
                 color: AppConstants.kHintText,
               ),
@@ -420,7 +481,7 @@ class PlaylistSearchBar extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.white,
                 width: 2,
               ),

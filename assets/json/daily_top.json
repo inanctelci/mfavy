@@ -1,0 +1,119 @@
+{
+  "success": 1,
+  "datas": [
+    {
+      "result": {
+        "data": [
+          {
+            "id": 1,
+            "total_rate": "15030",
+            "songName": "MOTİVE - 10 MG ︻デ═一",
+            "yMusicID": "2RAbPC9aKQ0",
+            "thumbnail": "https://i.ytimg.com/vi/2RAbPC9aKQ0/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLB1RFcsc7hsdl8DIjKPVGyQzJN1Gw",
+            "viewCount": 100000,
+            "myrate": 1
+          },
+          {
+            "id": 2,
+            "total_rate": "14415",
+            "songName": "Yokluğunda (Leyla The Band)",
+            "yMusicID": "mG7Abmn04fI",
+            "thumbnail": "https://i.ytimg.com/vi/49Kh1mS4Fhs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAv_PNMeWJFlC0Dhv76Ane__61OsA",
+            "viewCount": 70000,
+            "myrate": 4
+          },
+          {
+            "id": 3,
+            "total_rate": "13231",
+            "songName": "Son Feci Bisiklet - Bikinisinde Astronomi",
+            "yMusicID": "49Kh1mS4Fhs",
+            "thumbnail": "https://i.ytimg.com/vi/4qo0rBaM4ZY/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAKZls8976T4bGnCaysYMscv8gMgw",
+            "viewCount": 80000,
+            "myrate": 0
+          },
+          {
+            "id": 4,
+            "total_rate": "12314",
+            "songName": "UZI - SENIN UGRUNA FT MAVI",
+            "yMusicID": "IqTyfYDhIoc",
+            "thumbnail": "https://i.ytimg.com/vi/IqTyfYDhIoc/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCTJ1YvcZxAfpeuoxknfUygoP1-zA",
+            "viewCount": 91719,
+            "myrate": 3
+          },
+          {
+            "id": 5,
+            "total_rate": "12213",
+            "songName": "Gazapizm & Melike Şahin - Olur Mu?",
+            "yMusicID": "mw0_NiA2tx4",
+            "thumbnail": "https://i.ytimg.com/vi/mw0_NiA2tx4/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDlOoN32kmt34Y64Ky_xkTCXn4yHg",
+            "viewCount": 182180,
+            "myrate": 1
+          },
+          {
+            "id": 6,
+            "total_rate": "11314",
+            "songName": "LVBEL C5 - GELMEZSEN GELME",
+            "yMusicID": "IKxbsLhCVA8",
+            "thumbnail": "https://i.ytimg.com/vi/IKxbsLhCVA8/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAtKgUrC3HOCgIn7K_5YWpy7kz7WQ",
+            "viewCount": 124151,
+            "myrate": 0
+          },
+          {
+            "id": 7,
+            "total_rate": "10411",
+            "songName": "No.1 - Dünya Gül Bana (Düet Heja) | Official Video #SiyahBayrak",
+            "yMusicID": "LU5FrAKJmYQ",
+            "thumbnail": "https://i.ytimg.com/vi/LU5FrAKJmYQ/hqdefault.jpg?sqp=-oaymwE8CKgBEF5IWvKriqkDLwgBFQAAAAAYASUAAMhCPQCAokN4AfABAfgB1AaAAuADigIMCAAQARhGIGUoYzAP&rs=AOn4CLCgS25rAE8eEVP-jGAV7jNXDMaS_Q",
+            "viewCount": 124151,
+            "myrate": 0
+          },
+          {
+            "id": 8,
+            "total_rate": "8945",
+            "songName": "No.1 - Hiç Işık Yok (feat. Melek Mosso) #SiyahBayrak",
+            "yMusicID": "5PnEC4__CyM",
+            "thumbnail": "https://i.ytimg.com/vi/5PnEC4__CyM/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBtNQIRUrqoxq84luEZethtB6mzXw",
+            "viewCount": 123141,
+            "myrate": 0
+          },
+          {
+            "id": 9,
+            "total_rate": "6124",
+            "songName": "Future - Life Is Good (Official Music Video) ft. Drake",
+            "yMusicID": "l0U7SxXHkPY",
+            "thumbnail": "https://i.ytimg.com/vi/l0U7SxXHkPY/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAjl5kWKSmLUJtpOMIgN492KgMW9A",
+            "viewCount": 151234,
+            "myrate": 0
+          },
+          {
+            "id": 10,
+            "total_rate": "5161",
+            "songName": "POP SMOKE - DREAMING (Official Lyric Video)",
+            "yMusicID": "U-z6z_7Xt9A",
+            "thumbnail": "https://i.ytimg.com/vi/U-z6z_7Xt9A/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAtFKPcVOSuMd2CX120NLusvR7ypw",
+            "viewCount": 612311,
+            "myrate": 0
+          },
+          {
+            "id": 11,
+            "total_rate": "3141",
+            "songName": "BlocBoy JB - Swervin (Official Music Video)",
+            "yMusicID": "jUktXB5GZJw",
+            "thumbnail": "https://i.ytimg.com/vi/jUktXB5GZJw/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAU62vdI9jcxjA8jNmSzH9oSgQW8A",
+            "viewCount": 151231,
+            "myrate": 0
+          }
+        ],
+        "pagination": {
+          "total_records": 4,
+          "total_perpage": 10,
+          "total_page": 1,
+          "current_page": 1,
+          "next_page": null,
+          "previous_page": null
+        }
+      }
+    }
+  ],
+  "message": ""
+}

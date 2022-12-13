@@ -1,36 +1,31 @@
 import 'package:flutterframework/export.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PlayerController extends GetxController {
   late YoutubePlayerController youtubePlayerController;
-  bool _isPlayerReady = false;
-  RxBool _isTappedPlay = false.obs;
+  final RxBool _isTappedPlay = false.obs;
+  final RxDouble _position = 0.0.obs;
 
   get isTappedPlay => _isTappedPlay.value;
   set isTappedPlay(value) => _isTappedPlay.value = value;
 
-  void listener() {
-    if (_isPlayerReady && !youtubePlayerController.value.isFullScreen) {
-      update();
-    }
-  }
+  get position => _position.value;
+  set position(value) => _position.value = value;
 
   void init(String videoId) {
     youtubePlayerController = YoutubePlayerController(
       initialVideoId: videoId,
-      flags: YoutubePlayerFlags(
-        hideControls: false,
-        mute: false,
+      flags: const YoutubePlayerFlags(
         autoPlay: true,
+        enableCaption: false,
         disableDragSeek: true,
-        loop: false,
-        isLive: false,
-        forceHD: false,
-        enableCaption: true,
+        useHybridComposition: false,
         showLiveFullscreenButton: false,
       ),
     );
+    youtubePlayerController.addListener(() {
+      position = youtubePlayerController.value.position.inSeconds.toDouble();
+    });
   }
 
   @override

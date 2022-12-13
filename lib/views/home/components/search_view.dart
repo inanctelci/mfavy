@@ -4,14 +4,15 @@ import 'package:flutterframework/export.dart';
 import 'package:flutterframework/views/widgets/song_card.dart';
 import 'package:flutterframework/views/widgets/song_card_shimmer.dart';
 import 'package:flutterframework/views/widgets/youtube_video_player.dart';
+import 'package:html_character_entities/html_character_entities.dart';
 import 'package:youtube_api/youtube_api.dart';
 
 class SearchView extends StatelessWidget {
   SearchView({Key? key}) : super(key: key);
 
   YoutubeAPI youtube = YoutubeAPI("AIzaSyDZaGEqRJiRKB-8dCwX2lQbSeLn_5qMvHo");
-  HomeSearchController _searchController = Get.find<HomeSearchController>();
-  MiniPlayerController _miniPlayerController = Get.find<MiniPlayerController>();
+  final HomeSearchController _searchController = Get.find<HomeSearchController>();
+  final MiniPlayerController miniPlayerController = Get.find<MiniPlayerController>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class SearchView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Obx(
                     () {
-                      return _searchController.isAPIworking ? SongCardShimmer() : const SizedBox();
+                      return _searchController.isAPIworking ? const SongCardShimmer() : const SizedBox();
                     },
                   );
                 },
@@ -43,16 +44,25 @@ class SearchView extends StatelessWidget {
                   return Obx(
                     () {
                       return _searchController.isAPIworking
-                          ? SongCardShimmer()
+                          ? const SongCardShimmer()
                           : SongCard(
                               showCrowns: false,
                               title: _searchController.videoResults[index].title,
+                              // title: _searchController.videoResults[index].title,
                               videoId: _searchController.videoResults[index].id,
                               imgUrl: _searchController.videoResults[index].thumbnail.medium.url,
-                              rate: 'rate',
-                              watch: 'watch',
                               onTap: () {
-                                _miniPlayerController.isTapPlay = true;
+                                miniPlayerController.queueList.clear();
+                                if (!miniPlayerController.isTapPlay) {
+                                  miniPlayerController.isTapPlay = true;
+                                  miniPlayerController.init(_searchController.videoResults[index].id);
+                                  miniPlayerController.videoID = _searchController.videoResults[index].id;
+                                } else {
+                                  miniPlayerController.youtubePlayerController.value.load(_searchController.videoResults[index].id);
+                                  miniPlayerController.videoID = _searchController.videoResults[index].id;
+                                }
+                                miniPlayerController.title = _searchController.videoResults[index].title;
+                                miniPlayerController.imgUrl = _searchController.videoResults[index].thumbnail.medium.url;
                               },
                               widget: _searchController.tappedIndex == index
                                   ? YoutubeVideoPlayer(videoId: _searchController.videoResults[index].id)
@@ -77,12 +87,14 @@ class SearchView extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: SvgPicture.asset(
-                                              'assets/icons/play.svg',
-                                            ),
-                                          ),
+                                          // Align(
+                                          //   alignment: Alignment.center,
+                                          //   child: Icon(
+                                          //     Icons.play_arrow,
+                                          //     size: 60,
+                                          //     color: Colors.white,
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                     ),
