@@ -42,17 +42,18 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
+    //print("isloaded " + isLoaded.toString());
     // bannerAdController.init();
     return Center(
-      child: SizedBox(
-        width: Get.width * 0.92,
-        height: AdSize.banner.height.toDouble(),
-        child: isLoaded
-            ? AdWidget(
+      child: isLoaded
+          ? SizedBox(
+              width: Get.width * 0.92,
+              height: AdSize.banner.height.toDouble(),
+              child: AdWidget(
                 ad: bannerAd,
-              )
-            : const SizedBox(),
-      ),
+              ),
+            )
+          : const SizedBox(),
     );
   }
 }

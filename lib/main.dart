@@ -10,7 +10,7 @@ void main() async {
   PurchasesConfiguration _configuration = PurchasesConfiguration(AppConstants.googleAPIKey);
   await Purchases.configure(_configuration);
   MobileAds.instance.initialize();
-  MobileAds.instance.updateRequestConfiguration(RequestConfiguration(testDeviceIds: ['C3D84D01021BA5A30139DB2B9C2F7ED1']));
+  //MobileAds.instance.updateRequestConfiguration(RequestConfiguration(testDeviceIds: ['C3D84D01021BA5A30139DB2B9C2F7ED1']));
   await LocaleManager.instance.preferencesInit();
   bool isDarkMode = LocaleManager.instance.getBool(PreferencesKeys.isDarkMode) ?? Get.isPlatformDarkMode;
   String languageCode =
