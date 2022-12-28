@@ -1,19 +1,19 @@
-import 'package:flutterframework/bindings/library/library_binding.dart';
-import 'package:flutterframework/bindings/playlist/playlist_binding.dart';
-import 'package:flutterframework/export.dart';
-import 'package:flutterframework/views/contact/contact_view.dart';
-import 'package:flutterframework/views/library/library_view.dart';
-import 'package:flutterframework/views/navigation/navigation_view.dart';
-import 'package:flutterframework/views/onboard_view/onboard_view.dart';
-import 'package:flutterframework/views/widgets/add_playlist_view.dart';
-import '../../../views/playlist/playlist_view.dart';
+import '../../../bindings/library/library_binding.dart';
+import '../../../export.dart';
+import '../../../views/contact/contact_view.dart';
+import '../../../views/library/library_view.dart';
+import '../../../views/navigation/navigation_view.dart';
+import '../../../views/onboard_view/onboard_view.dart';
+import '../../../views/playlist/shared_playlist_view.dart';
+import '../../../views/splash/splash_screen.dart';
+import '../../../views/widgets/add_playlist_view.dart';
 
 class NavigationService {
   static List<GetPage> routes = [
     GetPage(
       transitionDuration: const Duration(microseconds: 0),
       name: NavigationConstants.navigation,
-      page: () => NavigationView(),
+      page: () => const NavigationView(),
       bindings: [
         HomeBinding(),
         LibraryBinding(),
@@ -25,8 +25,12 @@ class NavigationService {
       binding: ChangeLanguageBinding(),
     ),
     GetPage(
+      name: NavigationConstants.splash,
+      page: () => SplashScreen(),
+    ),
+    GetPage(
       name: NavigationConstants.onboard,
-      page: () => OnboardView(),
+      page: () => const OnboardView(),
     ),
     GetPage(
       name: NavigationConstants.contact,
@@ -51,7 +55,12 @@ class NavigationService {
     GetPage(
       transition: Transition.cupertino,
       name: NavigationConstants.addPlaylist,
-      page: () => const AddPlaylist(),
+      page: () => AddPlaylist(),
+    ),
+    GetPage(
+      transition: Transition.cupertino,
+      name: NavigationConstants.sharedPlaylist,
+      page: () => SharedPlaylistView(),
     ),
   ];
 }

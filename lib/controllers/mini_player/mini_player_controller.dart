@@ -1,5 +1,10 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/controllers/library/library_controller.dart';
+
+import '../../models/music/music_listener_req_model.dart';
+import '../../services/music/music_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../../export.dart';
 
 class MiniPlayerController extends GetxController {
   final RxString _videoID = ''.obs;
@@ -20,13 +25,17 @@ class MiniPlayerController extends GetxController {
   final RxDouble _duration = 0.0.obs;
   final RxString _positionText = '--:--'.obs;
   late Rx<YoutubePlayerController> youtubePlayerController;
-  final RxInt _playingIndex = 0.obs;
+  final RxInt _playingIndex = (-1).obs;
+  final RxInt _playingPlaylistIndex = (-1).obs;
   final Rx<UniqueKey> dismissKey = UniqueKey().obs;
   RxList queueList = [].obs;
   RxList shuffledQueueList = [].obs;
 
   get videoID => _videoID.value;
   set videoID(value) => _videoID.value = value;
+
+  get playingPlaylistIndex => _playingPlaylistIndex.value;
+  set playingPlaylistIndex(value) => _playingPlaylistIndex.value = value;
 
   get playingIndex => _playingIndex.value;
   set playingIndex(value) => _playingIndex.value = value;
@@ -111,9 +120,25 @@ class MiniPlayerController extends GetxController {
 
   playNextSong() {
     playingIndex = (playingIndex + 1) % queueList.length;
+    MusicService().musicListen(
+      MusicListenerReqModel(
+        listID: queueList.isEmpty ? 0 : LibraryController().tappedIndex,
+        id: videoID,
+        title: title,
+        thumbnails: imgUrl,
+      ),
+    );
   }
 
   playPrewSong() {
     playingIndex = (playingIndex - 1) % queueList.length;
+    MusicService().musicListen(
+      MusicListenerReqModel(
+        listID: queueList.isEmpty ? 0 : LibraryController().tappedIndex,
+        id: videoID,
+        title: title,
+        thumbnails: imgUrl,
+      ),
+    );
   }
 }

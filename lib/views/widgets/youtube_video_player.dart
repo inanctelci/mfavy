@@ -1,5 +1,5 @@
-import 'package:flutterframework/controllers/player_contoller/player_controller.dart';
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/controllers/player_contoller/player_controller.dart';
+import 'package:mfavymusic/export.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeVideoPlayer extends StatelessWidget {

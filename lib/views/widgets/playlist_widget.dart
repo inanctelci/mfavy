@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import '../../export.dart';
 
 class LibraryListItem extends StatelessWidget {
   const LibraryListItem({
@@ -6,13 +6,13 @@ class LibraryListItem extends StatelessWidget {
     required this.onTap,
     required this.isGrid,
     required this.title,
-    required this.imgUrl,
+    required this.img,
   }) : super(key: key);
 
   final VoidCallback onTap;
   final bool isGrid;
-  final String title;
-  final String imgUrl;
+  final Widget title;
+  final Widget img;
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +27,12 @@ class LibraryListItem extends StatelessWidget {
                   height: Get.width * 0.36,
                   width: Get.width * 0.42,
                   color: Colors.transparent,
-                  child: ClipRRect(
-                    child: Image.network(
-                      imgUrl,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  child: ClipRRect(child: img),
                 ),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontFamily: 'Mulish-SemiBold',
-                    fontSize: Get.width * 0.03,
-                    color: Colors.white,
-                  ),
-                ),
+                Flexible(child: title),
               ],
             )
           : Row(
@@ -52,25 +40,15 @@ class LibraryListItem extends StatelessWidget {
                 Container(
                   height: Get.width * 0.2,
                   width: Get.width * 0.2,
-                  color: Colors.transparent,
+                  color: Colors.black,
                   child: ClipRRect(
-                    child: Image.network(
-                      imgUrl,
-                      fit: BoxFit.cover,
-                    ),
+                    child: img,
                   ),
                 ),
                 SizedBox(
                   width: Get.width * 0.04,
                 ),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontFamily: 'Mulish-Medium',
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
+                Flexible(child: title)
               ],
             ),
     );

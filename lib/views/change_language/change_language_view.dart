@@ -1,4 +1,5 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
+
 class ChangeLanguageView extends StatelessWidget {
   ChangeLanguageView({Key? key}) : super(key: key);
 

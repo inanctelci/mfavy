@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PlayerController extends GetxController {

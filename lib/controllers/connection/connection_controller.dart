@@ -25,14 +25,14 @@ class ConnectionController extends GetxController {
       Get.snackbar(
         'İnternet Bağlantısı Yok',
         'Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz'.tr,
-        titleText: Text(
+        titleText: const Text(
           'İnternet Bağlantısı yok',
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Mulish-ExtraBold',
           ),
         ),
-        messageText: Text(
+        messageText: const Text(
           'Lütfen internet bağlantınızı kontrol edip tekrar deneyiniz',
           style: TextStyle(
             color: Colors.white,

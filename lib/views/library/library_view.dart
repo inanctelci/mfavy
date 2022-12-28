@@ -1,7 +1,11 @@
+import '../../controllers/future/future_controller.dart';
 import '../../controllers/library/library_controller.dart';
+import '../../controllers/mini_player/mini_player_controller.dart';
+import '../../controllers/scroll_controller/scroll_controller.dart';
 import '../../export.dart';
-import '../../models/music_list/music_list_model.dart';
-import '../../services/user/list_service.dart';
+import '../../models/user_list/create_list_req_model.dart';
+import '../../models/user_list/user_lists_model.dart';
+import '../../services/list/list_service.dart';
 import '../playlist/playlist_view.dart';
 import '../widgets/playlist_widget.dart';
 
@@ -15,19 +19,23 @@ class LibraryView extends StatelessWidget {
     PageController pageController = libraryController.pageController;
     return Scaffold(
       backgroundColor: AppConstants.kAppBlack,
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        children: [
-          LibraryPage(),
-          PlaylistView(
-            onTapBack: () {
-              pageController.animateToPage(0, duration: const Duration(milliseconds: 300), curve: Curves.ease);
-            },
-            listID: libraryController.tappedIndex,
-          ),
-        ],
-      ),
+      body: GetBuilder<LibraryController>(builder: (context) {
+        return PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: pageController,
+          children: [
+            LibraryPage(),
+            PlaylistView(
+              onTapBack: () {
+                pageController.animateToPage(0, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+
+                libraryController.update();
+              },
+              listID: libraryController.tappedIndex,
+            ),
+          ],
+        );
+      }),
       // bottomNavigationBar: Column(
       //   mainAxisSize: MainAxisSize.min,
       //   children: [
@@ -46,6 +54,8 @@ class LibraryPage extends StatelessWidget {
 
   final LibraryController _controller = Get.find();
   final FocusNode _node = FocusNode();
+  final MiniPlayerController _miniPlayerController = Get.find();
+  FutureContoller futureContoller = Get.find<FutureContoller>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,94 +67,177 @@ class LibraryPage extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
-          child: FutureBuilder<MusicListModel>(
-            future: ListService().getList(context),
-            builder: (context, snapshot) {
-              return snapshot.hasData
-                  ? Obx(
-                      () {
-                        return Column(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: Get.height * 0.04,
-                            ),
-                            _controller.isSearching
-                                ? PlaylistSearchBar(
-                                    node: _node,
-                                  )
-                                : Column(
-                                    children: [
-                                      PlaylistHeadLine(
-                                        node: _node,
-                                      ),
-                                      SizedBox(
-                                        height: Get.height * 0.04,
-                                      ),
-                                      PlaylistViewOptions(),
-                                    ],
+          child: GetBuilder<LibraryController>(
+              id: 'library_page',
+              builder: (getBuliderContext) {
+                return FutureBuilder<UserListsModel>(
+                  future: ListService().getList(
+                    context,
+                    _controller.sortOpt,
+                  ),
+                  builder: (context, snapshot) {
+                    return !snapshot.hasData
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : Obx(
+                            () {
+                              return Column(
+                                // crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: Get.height * 0.04,
                                   ),
-                            SizedBox(
-                              height: Get.height * 0.04,
-                            ),
-                            Obx(
-                              () {
-                                return SizedBox(
-                                  height: (Get.height * 0.22) * snapshot.data!.datas[0].data.length,
-                                  width: Get.width * 0.92,
-                                  child: _controller.isGridTapped
-                                      ? GridView.extent(
-                                          childAspectRatio: 1,
-                                          physics: const NeverScrollableScrollPhysics(),
-                                          maxCrossAxisExtent: Get.width * 0.5,
-                                          mainAxisSpacing: Get.height * 0.06,
-                                          crossAxisSpacing: Get.width * 0.08,
-                                          children: List.generate(
-                                            snapshot.data!.datas[0].data.length,
-                                            (index) => LibraryListItem(
-                                              onTap: () {
-                                                _controller.tappedIndex = index;
-                                                _controller.pageController
-                                                    .animateToPage(1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
-                                              },
-                                              isGrid: true,
-                                              imgUrl: snapshot.data!.datas[0].data[index].thumbnail,
-                                              title: snapshot.data!.datas[0].data[index].listName,
-                                            ),
-                                          ),
+                                  _controller.isSearching
+                                      ? PlaylistSearchBar(
+                                          node: _node,
                                         )
-                                      : ListView.separated(
-                                          physics: const NeverScrollableScrollPhysics(),
-                                          itemBuilder: (context, index) {
-                                            return LibraryListItem(
-                                              onTap: () {
-                                                _controller.tappedIndex = index;
-                                                print(_controller.tappedIndex);
-                                                _controller.pageController
-                                                    .animateToPage(1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
-                                              },
-                                              isGrid: false,
-                                              imgUrl: snapshot.data!.datas[0].data[index].thumbnail,
-                                              title: snapshot.data!.datas[0].data[index].listName,
-                                            );
-                                          },
-                                          separatorBuilder: (context, index) {
-                                            return SizedBox(
-                                              height: Get.height * 0.02,
-                                            );
-                                          },
-                                          itemCount: snapshot.data!.datas[0].data.length,
+                                      : Column(
+                                          children: [
+                                            PlaylistHeadLine(
+                                              node: _node,
+                                            ),
+                                            SizedBox(
+                                              height: Get.height * 0.04,
+                                            ),
+                                            PlaylistViewOptions(),
+                                          ],
                                         ),
-                                );
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    )
-                  : CircularProgressIndicator();
-            },
-          ),
+                                  SizedBox(
+                                    height: Get.height * 0.04,
+                                  ),
+                                  snapshot.data!.data[0].datas!.isEmpty
+                                      ? const SizedBox()
+                                      : Obx(
+                                          () {
+                                            return SizedBox(
+                                              height: (Get.height * 0.22) * snapshot.data!.data[0].datas!.length,
+                                              width: Get.width * 0.92,
+                                              child: _controller.isGridTapped
+                                                  ? GridView.extent(
+                                                      childAspectRatio: 1,
+                                                      physics: const NeverScrollableScrollPhysics(),
+                                                      maxCrossAxisExtent: Get.width * 0.5,
+                                                      mainAxisSpacing: Get.height * 0.06,
+                                                      crossAxisSpacing: Get.width * 0.08,
+                                                      children: List.generate(
+                                                        snapshot.data!.data[0].datas!.length,
+                                                        (index) => LibraryListItem(
+                                                          onTap: () {
+                                                            _controller.tappedIndex = snapshot.data!.data[0].datas![index].id;
+                                                            _controller.tappedListName = snapshot.data!.data[0].datas![index].listName;
+                                                            _controller.tappedListImg = snapshot.data!.data[0].datas![index].thumbnail;
+                                                            _controller.pageController
+                                                                .animateToPage(1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+                                                            futureContoller.updatePage(['playlist']);
+                                                          },
+                                                          isGrid: true,
+                                                          img: snapshot.data!.data[0].datas![index].thumbnail == "."
+                                                              ? Image.asset(
+                                                                  'assets/images/playlist.png',
+                                                                  fit: BoxFit.cover,
+                                                                )
+                                                              : Image.network(
+                                                                  snapshot.data!.data[0].datas![index].thumbnail!,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                          title: Obx(
+                                                            () {
+                                                              return _miniPlayerController.playingPlaylistIndex ==
+                                                                      snapshot.data!.data[0].datas![index].id
+                                                                  ? Text(
+                                                                      snapshot.data!.data[0].datas![index].listName!,
+                                                                      style: TextStyle(
+                                                                        fontFamily: 'Mulish-ExtraBold',
+                                                                        color: AppConstants.kPrimaryColor,
+                                                                        fontSize: Get.width * 0.04,
+                                                                      ),
+                                                                    )
+                                                                  : Text(
+                                                                      snapshot.data!.data[0].datas![index].listName!,
+                                                                      style: TextStyle(
+                                                                        fontFamily: 'Mulish-Medium',
+                                                                        color: Colors.white,
+                                                                        fontSize: Get.width * 0.04,
+                                                                      ),
+                                                                    );
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ))
+                                                  : ListView.separated(
+                                                      physics: const NeverScrollableScrollPhysics(),
+                                                      itemBuilder: (context, index) {
+                                                        return LibraryListItem(
+                                                          onTap: () {
+                                                            _controller.tappedIndex = snapshot.data!.data[0].datas![index].id;
+                                                            _controller.tappedListName = snapshot.data!.data[0].datas![index].listName;
+                                                            _controller.tappedListImg = snapshot.data!.data[0].datas![index].thumbnail;
+                                                            _controller.pageController
+                                                                .animateToPage(1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+                                                            futureContoller.updatePage(['playlist']);
+                                                          },
+                                                          isGrid: false,
+                                                          img: snapshot.data!.data[0].datas![index].thumbnail == "."
+                                                              ? Image.asset(
+                                                                  'assets/images/playlist.png',
+                                                                  fit: BoxFit.cover,
+                                                                )
+                                                              : Image.network(
+                                                                  snapshot.data!.data[0].datas![index].thumbnail!,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                          title: Obx(
+                                                            () {
+                                                              return _miniPlayerController.playingPlaylistIndex ==
+                                                                      snapshot.data!.data[0].datas![index].id
+                                                                  ? Padding(
+                                                                      padding: EdgeInsets.only(right: Get.width * 0.4),
+                                                                      child: Text(
+                                                                        snapshot.data!.data[0].datas![index].listName!,
+                                                                        maxLines: 2,
+                                                                        overflow: TextOverflow.ellipsis,
+                                                                        style: TextStyle(
+                                                                          fontFamily: 'Mulish-ExtraBold',
+                                                                          color: AppConstants.kPrimaryColor,
+                                                                          fontSize: Get.width * 0.04,
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Padding(
+                                                                      padding: EdgeInsets.only(right: Get.width * 0.04),
+                                                                      child: Text(
+                                                                        snapshot.data!.data[0].datas![index].listName!,
+                                                                        maxLines: 2,
+                                                                        overflow: TextOverflow.ellipsis,
+                                                                        style: TextStyle(
+                                                                          fontFamily: 'Mulish-Medium',
+                                                                          color: Colors.white,
+                                                                          fontSize: Get.width * 0.04,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                            },
+                                                          ),
+                                                        );
+                                                      },
+                                                      separatorBuilder: (context, index) {
+                                                        return SizedBox(
+                                                          height: Get.height * 0.02,
+                                                        );
+                                                      },
+                                                      itemCount: snapshot.data!.data[0].datas!.length,
+                                                    ),
+                                            );
+                                          },
+                                        ),
+                                ],
+                              );
+                            },
+                          );
+                  },
+                );
+              }),
         ),
       ),
     );
@@ -183,23 +276,7 @@ class PlaylistViewOptions extends StatelessWidget {
                   icon: const SizedBox(),
                   style: const TextStyle(color: Colors.white),
                   dropdownColor: AppConstants.kBoxGrey,
-                  items: <String>[
-                    'En Son Dinlenen',
-                    'En Yeni Oluşturulan',
-                    'Alfabetik',
-                  ].map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(
-                        value,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Mulish-Medium',
-                          fontSize: Get.width * 0.04,
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                  items: getDropdownItems(),
                   onChanged: (String? value) {
                     _controller.sortBy = value;
                   },
@@ -228,6 +305,36 @@ class PlaylistViewOptions extends StatelessWidget {
       ),
     );
   }
+
+  getDropdownItems() {
+    return <String>[
+      'En Son Dinlenen',
+      'En Yeni Oluşturulan',
+      'Alfabetik',
+    ].map<DropdownMenuItem<String>>((String value) {
+      return DropdownMenuItem<String>(
+        value: value,
+        onTap: () {
+          value == 'Alfabetik'
+              ? _controller.sortOpt = 1
+              : value == 'En Yeni Oluşturulan'
+                  ? _controller.sortOpt = 2
+                  : value == 'Alfabetik'
+                      ? _controller.sortOpt = 3
+                      : _controller.sortOpt = 1;
+          _controller.updatePage('library_page');
+        },
+        child: Text(
+          value,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Mulish-Medium',
+            fontSize: Get.width * 0.04,
+          ),
+        ),
+      );
+    }).toList();
+  }
 }
 
 class PlaylistHeadLine extends StatelessWidget {
@@ -238,6 +345,8 @@ class PlaylistHeadLine extends StatelessWidget {
 
   final LibraryController _controller = Get.find();
   final FocusNode node;
+  final TextEditingController _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -293,6 +402,7 @@ class PlaylistHeadLine extends StatelessWidget {
                                   SizedBox(
                                     width: Get.width * 0.6,
                                     child: TextFormField(
+                                      controller: _textController,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.white,
@@ -344,42 +454,88 @@ class PlaylistHeadLine extends StatelessWidget {
                                         width: Get.width * 0.06,
                                       ),
                                       GestureDetector(
-                                        onTap: () {
-                                          Get.back();
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(
-                                              content: Container(
-                                                height: Get.height * 0.05,
-                                                width: Get.width,
-                                                decoration: BoxDecoration(
-                                                  color: AppConstants.kAppGrey.withOpacity(0.8),
-                                                  borderRadius: BorderRadius.circular(4),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: Row(
-                                                    children: [
-                                                      SvgPicture.asset('assets/icons/like.svg'),
-                                                      const SizedBox(
-                                                        width: 5,
+                                        onTap: () async {
+                                          ListService().createList(CreateListReqModel(listName: _textController.text, thumbnail: ".")).then((value) {
+                                            if (value.success == 1) {
+                                              Get.back();
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                SnackBar(
+                                                  duration: const Duration(milliseconds: 1200),
+                                                  content: Container(
+                                                    height: Get.height * 0.05,
+                                                    width: Get.width,
+                                                    decoration: BoxDecoration(
+                                                      color: AppConstants.kAppGrey.withOpacity(0.8),
+                                                      borderRadius: BorderRadius.circular(4),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.all(8.0),
+                                                      child: Row(
+                                                        children: [
+                                                          SvgPicture.asset('assets/icons/like.svg'),
+                                                          const SizedBox(
+                                                            width: 5,
+                                                          ),
+                                                          Text(
+                                                            'Çalma Listesi Oluşturuldu.',
+                                                            style: TextStyle(
+                                                              fontFamily: 'Mulish-ExtraBold',
+                                                              color: Colors.white,
+                                                              fontSize: Get.width * 0.03,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      Text(
-                                                        'Çalma Listesi Oluşturuldu.',
-                                                        style: TextStyle(
-                                                          fontFamily: 'Mulish-ExtraBold',
-                                                          color: Colors.white,
-                                                          fontSize: Get.width * 0.03,
-                                                        ),
-                                                      ),
-                                                    ],
+                                                    ),
                                                   ),
+                                                  backgroundColor: Colors.transparent,
+                                                  elevation: 0,
+                                                  behavior: SnackBarBehavior.floating,
                                                 ),
-                                              ),
-                                              backgroundColor: Colors.transparent,
-                                              elevation: 0,
-                                              behavior: SnackBarBehavior.floating,
-                                            ),
-                                          );
+                                              );
+                                            } else {
+                                              Get.back();
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                SnackBar(
+                                                  duration: const Duration(milliseconds: 1200),
+                                                  content: Container(
+                                                    height: Get.height * 0.05,
+                                                    width: Get.width,
+                                                    decoration: BoxDecoration(
+                                                      color: AppConstants.kAppGrey.withOpacity(0.8),
+                                                      borderRadius: BorderRadius.circular(4),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.all(8.0),
+                                                      child: Row(
+                                                        children: [
+                                                          SvgPicture.asset(
+                                                            'assets/icons/message-question.svg',
+                                                            color: Colors.red.shade600,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 5,
+                                                          ),
+                                                          Text(
+                                                            'Bir şeyler ters gitti. Lütfen tekrar deneyiniz',
+                                                            style: TextStyle(
+                                                              fontFamily: 'Mulish-ExtraBold',
+                                                              color: Colors.white,
+                                                              fontSize: Get.width * 0.03,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  backgroundColor: Colors.transparent,
+                                                  elevation: 0,
+                                                  behavior: SnackBarBehavior.floating,
+                                                ),
+                                              );
+                                            }
+                                            _controller.updatePage('library_page');
+                                          });
                                         },
                                         child: Container(
                                           height: Get.height * 0.04,
@@ -418,13 +574,13 @@ class PlaylistHeadLine extends StatelessWidget {
                 ],
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Listelerim',
                 style: TextStyle(
                   fontFamily: 'Mulish-ExtraBold',
-                  fontSize: 24,
+                  fontSize: Get.width * 0.05,
                   color: Colors.white,
                 ),
               ),

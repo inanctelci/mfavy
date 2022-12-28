@@ -1,4 +1,5 @@
-import 'package:flutterframework/export.dart';
+import '../../export.dart';
+
 class ChangeLanguageBinding implements Bindings {
   @override
   void dependencies() {

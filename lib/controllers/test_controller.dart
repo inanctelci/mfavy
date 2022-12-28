@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class TestController extends GetxController {
@@ -11,28 +11,28 @@ class TestController extends GetxController {
   void onInit() {
     controller1 = YoutubePlayerController(
       initialVideoId: 'jSoTzM-E4v0',
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         forceHD: true,
       ),
     );
     controller2 = YoutubePlayerController(
       initialVideoId: 'jSoTzM-E4v0',
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         forceHD: true,
       ),
     );
     controller3 = YoutubePlayerController(
       initialVideoId: 'jSoTzM-E4v0',
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         forceHD: true,
       ),
     );
     controller4 = YoutubePlayerController(
       initialVideoId: 'jSoTzM-E4v0',
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         forceHD: true,
       ),

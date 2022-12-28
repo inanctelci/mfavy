@@ -1,4 +1,7 @@
 import '../../../controllers/tabbar/tabbar_controller.dart';
+import '../../../controllers/tops/daily_top_controller.dart';
+import '../../../controllers/tops/monthly_top_controller.dart';
+import '../../../controllers/tops/weekly_top_controller.dart';
 import '../../../export.dart';
 import 'daily_top.dart';
 import 'monthly_top.dart';
@@ -38,6 +41,31 @@ class TabBarWidget extends StatelessWidget {
               ),
               onTap: ((value) {
                 tabController.index.value = value;
+                switch (value) {
+                  case 0:
+                    DailyTopController().tapCounter += 1;
+                    if (DailyTopController().tapCounter == 2) {
+                      DailyTopController().update();
+                      DailyTopController().tapCounter = 0;
+                    }
+                    break;
+                  case 1:
+                    WeeklyTopController().tapCounter += 1;
+                    if (WeeklyTopController().tapCounter == 2) {
+                      WeeklyTopController().update();
+                      WeeklyTopController().tapCounter = 0;
+                    }
+                    break;
+                  case 2:
+                    MonthlyTopController().tapCounter += 1;
+                    if (MonthlyTopController().tapCounter == 2) {
+                      MonthlyTopController().update();
+                      MonthlyTopController().tapCounter = 0;
+                    }
+                    break;
+                  default:
+                    break;
+                }
               }),
             ),
           ),
@@ -47,12 +75,12 @@ class TabBarWidget extends StatelessWidget {
         ),
         SizedBox(
           width: Get.width,
-          height: Get.height * 10 * 0.17,
+          height: (Get.height * 0.158 * 9) + (4 * Get.height * 0.21) + (Get.height * 0.0775 * 4) + (Get.height * 0.2),
           child: TabBarView(
-            clipBehavior: Clip.none,
+            clipBehavior: Clip.hardEdge,
             viewportFraction: 0.99,
             controller: tabController.controller,
-            children: [DailyTop(), const WeeklyTop(), const MonthlyTop()],
+            children: [DailyTop(), WeeklyTop(), MonthlyTop()],
           ),
         ),
       ],

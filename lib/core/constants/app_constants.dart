@@ -1,8 +1,8 @@
-import 'package:flutterframework/export.dart';
+import '../../export.dart';
 
 class AppConstants {
   static const String appName = 'MFavy';
-  static String baseURL = 'dog.ceo';
+  static String token = '';
   static const String fontFamily = 'Roboto';
   static const String defaultLanguage = 'tr';
   static const int responseTimeout = 60;
@@ -15,4 +15,7 @@ class AppConstants {
   static const Color kCrownGold = Color(0xFFFFD700);
   static const Color kCrownSilver = Color(0xFFC0C0C0);
   static const Color kCrownBronze = Color(0xFFCD7F32);
+
+  static const entitlementID = 'premium';
+  static const googleAPIKey = 'goog_koRdNXkIepfbylJtTIPSiviizhU';
 }

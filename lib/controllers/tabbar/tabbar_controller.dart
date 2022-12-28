@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 
 class TabBarController extends GetxController with GetSingleTickerProviderStateMixin {
   late TabController controller;

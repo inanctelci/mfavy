@@ -7,6 +7,7 @@ class OnboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OnBoardController controller = Get.put<OnBoardController>(OnBoardController());
+
     return Scaffold(
       backgroundColor: AppConstants.kAppBlack,
       appBar: AppBar(
@@ -48,18 +49,17 @@ class OnboardView extends StatelessWidget {
       ),
       body: PageView(
         controller: controller.pageController.value,
-        children: [
-          const OnboardOne(),
-          const OnboardTwo(),
-          const OnboardThree(),
+        children: const [
+          OnboardOne(),
+          OnboardTwo(),
+          OnboardThree(),
         ],
         onPageChanged: (value) {
           controller.currentIndex = value;
-          print(value);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: Get.width * 0.15,
         width: Get.width,
         child: Row(

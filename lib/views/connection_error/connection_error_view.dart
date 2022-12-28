@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 
 class ConnectionErrorView extends StatelessWidget {
   ConnectionErrorView({Key? key}) : super(key: key);
@@ -43,14 +43,14 @@ class ConnectionErrorView extends StatelessWidget {
               onPressed: () {
                 connectionController.checkConnection();
               },
-              child: Text(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppConstants.kPrimaryColor,
+              ),
+              child: const Text(
                 'Tekrar Dene',
                 style: TextStyle(
                   fontFamily: 'Mulish-Bold',
                 ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppConstants.kPrimaryColor,
               ),
             ),
           ],

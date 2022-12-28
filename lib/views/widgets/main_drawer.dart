@@ -1,9 +1,8 @@
-import 'package:flutterframework/controllers/library/library_controller.dart';
-import 'package:flutterframework/export.dart';
-import 'package:flutterframework/views/contact/contact_view.dart';
-import 'package:flutterframework/views/home/components/test.dart';
-import 'package:flutterframework/views/navigation/navigation_view.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../export.dart';
+import '../home/components/test.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -35,7 +34,8 @@ class MainDrawer extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Share.share('check out my website https://example.com');
+                Share.share(
+                    'Hadi sen de MFavy uygulamasını indir, zirve yarışının bir parçası ol \nhttps://play.google.com/store/apps/details?id=com.mfavymusic.istechsoft');
               },
               child: Row(
                 children: [
@@ -61,25 +61,30 @@ class MainDrawer extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.025,
             ),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/medal-star.svg',
-                  color: Colors.white,
-                  width: Get.width * 0.08,
-                ),
-                SizedBox(
-                  width: Get.width * 0.03,
-                ),
-                Text(
-                  'Puan Ver',
-                  style: TextStyle(
+            GestureDetector(
+              onTap: () {
+                launchUrl(Uri.parse("https://play.google.com/store/apps/details?id=com.mfavymusic.istechsoft"));
+              },
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/medal-star.svg',
                     color: Colors.white,
-                    fontFamily: 'Mulish-Bold',
-                    fontSize: Get.width * 0.035,
+                    width: Get.width * 0.08,
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: Get.width * 0.03,
+                  ),
+                  Text(
+                    'Puan Ver',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Mulish-Bold',
+                      fontSize: Get.width * 0.035,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: Get.height * 0.025,
@@ -109,20 +114,20 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: Get.height * 0.025,
-            ),
+            // SizedBox(
+            //   height: Get.height * 0.025,
+            // ),
             // GestureDetector(
             //   onTap: () {
             //     Navigator.push(context, MaterialPageRoute(
             //       builder: (context) {
-            //         return HomeView();
+            //         return Test();
             //       },
             //     ));
             //   },
             //   child: Row(
             //     children: [
-            //       Icon(
+            //       const Icon(
             //         Icons.e_mobiledata,
             //         color: Colors.white,
             //       ),

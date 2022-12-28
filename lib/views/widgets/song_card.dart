@@ -9,8 +9,6 @@ class SongCard extends StatelessWidget {
     required this.showCrowns,
     required this.title,
     this.myRate,
-    required this.videoId,
-    required this.imgUrl,
     required this.widget,
     this.onTap,
     this.totalRate,
@@ -18,6 +16,8 @@ class SongCard extends StatelessWidget {
     this.ratePopup,
     this.playButton,
     this.backGroundIndicator,
+    this.addPlaylistButton,
+    this.isPlaylist,
   }) : super(key: key);
 
   final int? index;
@@ -26,13 +26,13 @@ class SongCard extends StatelessWidget {
   final String? myRate;
   final String? totalRate;
   final String? viewCount;
-  final String videoId;
-  final String imgUrl;
   final Widget widget;
   final VoidCallback? onTap;
+  final VoidCallback? addPlaylistButton;
   final Widget? ratePopup;
   final Widget? playButton;
   final Widget? backGroundIndicator;
+  final bool? isPlaylist;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class SongCard extends StatelessWidget {
       child: Stack(children: [
         Align(
           alignment: Alignment.center,
-          child: backGroundIndicator ?? SizedBox(),
+          child: backGroundIndicator ?? const SizedBox(),
         ),
         Align(
           alignment: Alignment.center,
@@ -68,17 +68,14 @@ class SongCard extends StatelessWidget {
                           ),
                           child: ClipRRect(borderRadius: BorderRadius.circular(4), child: widget),
                         ),
-                        index == 0 || index == 1 || index == 2
-                            ? SvgPicture.asset(
-                                index == 0
-                                    ? 'assets/icons/medal-gold.svg'
-                                    : index == 1
-                                        ? 'assets/icons/medal-silver.svg'
-                                        : index == 2
-                                            ? 'assets/icons/medal-bronze.svg'
-                                            : '',
-                                width: Get.width * 0.08,
-                              )
+                        showCrowns
+                            ? index == 0
+                                ? SvgPicture.asset('assets/icons/gold-medal.svg')
+                                : index == 1
+                                    ? SvgPicture.asset('assets/icons/silver-medal.svg')
+                                    : index == 2
+                                        ? SvgPicture.asset('assets/icons/bronze-medal.svg')
+                                        : const SizedBox()
                             : const SizedBox(),
                       ]),
                       SizedBox(
@@ -210,9 +207,7 @@ class SongCard extends StatelessWidget {
                                       width: 5,
                                     ),
                                     GestureDetector(
-                                      onTap: () {
-                                        Get.toNamed(NavigationConstants.addPlaylist);
-                                      },
+                                      onTap: addPlaylistButton,
                                       child: Container(
                                         height: Get.width * 0.1,
                                         width: Get.width * 0.1,
@@ -224,9 +219,13 @@ class SongCard extends StatelessWidget {
                                           padding: EdgeInsets.all(
                                             Get.width * 0.015,
                                           ),
-                                          child: SvgPicture.asset(
-                                            'assets/icons/music-square-add.svg',
-                                          ),
+                                          child: isPlaylist == true
+                                              ? SvgPicture.asset(
+                                                  'assets/icons/music-square-remove.svg',
+                                                )
+                                              : SvgPicture.asset(
+                                                  'assets/icons/music-square-add.svg',
+                                                ),
                                         ),
                                       ),
                                     ),

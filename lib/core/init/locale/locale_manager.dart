@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 
 class LocaleManager {
   static final LocaleManager _instance = LocaleManager._init();

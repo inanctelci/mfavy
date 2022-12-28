@@ -1,5 +1,5 @@
-import 'package:flutterframework/controllers/navigation_bar/navigation_bar_controller.dart';
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/controllers/navigation_bar/navigation_bar_controller.dart';
+import 'package:mfavymusic/export.dart';
 
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({Key? key}) : super(key: key);

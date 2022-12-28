@@ -1,4 +1,5 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
+
 class LanguageController extends GetxController {
   updateLocale(String languageCode) async {
     await LocaleManager.instance.setString(PreferencesKeys.languageCode, languageCode);

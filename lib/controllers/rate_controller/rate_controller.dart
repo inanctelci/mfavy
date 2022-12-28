@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 
 class RateController extends GetxController {
   final _tappedIndex = 0.obs;

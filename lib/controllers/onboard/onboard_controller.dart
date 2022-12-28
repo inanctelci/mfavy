@@ -1,7 +1,7 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 
 class OnBoardController extends GetxController {
-  RxInt _currentIndex = 0.obs;
+  final RxInt _currentIndex = 0.obs;
   Rx<PageController> pageController = PageController(viewportFraction: 0.99).obs;
 
   // get pageController => _pageController.value;

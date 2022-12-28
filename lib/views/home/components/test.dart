@@ -1,61 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:encrypt/encrypt.dart' as enc;
 
-class Test extends StatefulWidget {
-  Test({super.key});
+import '../../../export.dart';
 
-  @override
-  State<Test> createState() => _TestState();
-}
-
-class _TestState extends State<Test> with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-
-  @override
-  void initState() {
-    void initState() {
-      super.initState();
-      controller = AnimationController(
-        duration: const Duration(seconds: 1),
-        vsync: this,
-      );
-    }
-
-    super.initState();
-  }
+class Test extends StatelessWidget {
+  const Test({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Dismissible(
-          key: UniqueKey(),
-          direction: DismissDirection.horizontal,
-          resizeDuration: const Duration(milliseconds: 200),
-          onResize: () {
-            print('Widget resized in direction: ');
-          },
-          onDismissed: (direction) {
-            setState(() {});
-          },
-          child: AnimatedSwitcher(
-            reverseDuration: const Duration(milliseconds: 200),
-            duration: const Duration(milliseconds: 500),
-            transitionBuilder: (child, animation) => FadeTransition(
-              opacity: animation,
-              child: child,
-            ),
-            child: Text(
-              'Swipeable Text',
-              key: UniqueKey(),
-              style: const TextStyle(
-                fontSize: 24.0,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
+    return Center(
+        child: Container(
+      child: ElevatedButton(
+        child: Text('data'),
+        onPressed: (() {
+          final plainText = '65';
+          final key = enc.Key.fromUtf8('my 32 length key................');
+          final iv = enc.IV.fromLength(16);
+
+          final encrypter = enc.Encrypter(enc.AES(key));
+
+          final encrypted = encrypter.encrypt(plainText, iv: iv);
+          print(encrypted.base16);
+          final decrypted = encrypter.decrypt(encrypted, iv: iv);
+        }),
       ),
-    );
+    ));
   }
 }

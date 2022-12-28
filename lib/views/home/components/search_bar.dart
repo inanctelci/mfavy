@@ -1,8 +1,12 @@
-import 'package:flutterframework/controllers/home_search/home_search_controller.dart';
-import 'package:flutterframework/export.dart';
+import 'package:http/http.dart' as http;
 import 'package:substring_highlight/substring_highlight.dart';
 import 'package:youtube_api/youtube_api.dart';
-import 'package:http/http.dart' as http;
+
+import '../../../controllers/home_search/home_search_controller.dart';
+import '../../../controllers/tops/daily_top_controller.dart';
+import '../../../controllers/tops/monthly_top_controller.dart';
+import '../../../controllers/tops/weekly_top_controller.dart';
+import '../../../export.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({
@@ -14,19 +18,18 @@ class SearchBar extends StatelessWidget {
     HomeSearchController searchController = Get.find();
     FocusNode externalFocusNode = FocusNode();
 
-    YoutubeAPI youtube = YoutubeAPI("AIzaSyDbQjkg1U7VlxN9WN1Mgtky4JCAEz7fMGo");
     List<YouTubeVideo> videoResult = [];
-
     List<dynamic>? autoComplete;
-    bool isntNull = false;
-
     Future<void> autoCompleteSuggestions(String text) async {
       var getSuggestions = await http.get(Uri.parse('http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=$text'));
       final extractedData = json.decode(getSuggestions.body) as List<dynamic>;
       autoComplete = extractedData;
-      if (autoComplete != null) isntNull = true;
     }
 
+    YoutubeAPI youtube = YoutubeAPI(
+      "AIzaSyAYJd9TWaVhga7sac9uzSTw4LjEKREmhiE",
+      maxResults: 20,
+    );
     Future<void> callAPI() async {
       searchController.isAPIworking = true;
       videoResult = await youtube.search(
@@ -35,9 +38,9 @@ class SearchBar extends StatelessWidget {
         videoDuration: 'any',
         regionCode: 'tr',
       );
-      searchController.videoResults = videoResult;
-      searchController.isAPIworking = false;
-      searchController.tappedIndex = (-1);
+      searchController.videoResult.value = videoResult;
+      searchController.tappedVideoIndex = (-1);
+      searchController.tappedSoundIndex = (-1);
     }
 
     return Padding(
@@ -54,9 +57,7 @@ class SearchBar extends StatelessWidget {
             }
           }
         },
-        onSelected: (String selection) {
-          print('You just selected $selection');
-        },
+        onSelected: (String selection) {},
         fieldViewBuilder: (BuildContext context, TextEditingController textEditingController, FocusNode focusNode, VoidCallback onFieldSubmitted) {
           searchController.textController = textEditingController;
           externalFocusNode = focusNode;
@@ -71,7 +72,6 @@ class SearchBar extends StatelessWidget {
             },
             onChanged: ((value) {
               autoCompleteSuggestions(value);
-              print(autoComplete.toString());
               // setState(() {});
             }),
             onFieldSubmitted: (val) {
@@ -113,6 +113,9 @@ class SearchBar extends StatelessWidget {
                                 searchController.isSearching = false;
                                 textEditingController.clear();
                                 focusNode.unfocus();
+                                WeeklyTopController().update();
+                                DailyTopController().update();
+                                MonthlyTopController().update();
                               },
                               child: SvgPicture.asset(
                                 'assets/icons/arrow-left.svg',

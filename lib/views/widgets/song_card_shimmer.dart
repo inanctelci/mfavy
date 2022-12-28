@@ -1,4 +1,4 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SongCardShimmer extends StatelessWidget {

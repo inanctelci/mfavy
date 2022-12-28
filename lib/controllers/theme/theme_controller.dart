@@ -1,4 +1,5 @@
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/export.dart';
+
 class ThemeController extends GetxController {
   var isDarkMode = (LocaleManager.instance.getBool(PreferencesKeys.isDarkMode) ?? Get.isPlatformDarkMode).obs;
 

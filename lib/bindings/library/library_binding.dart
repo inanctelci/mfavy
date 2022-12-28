@@ -1,5 +1,5 @@
-import 'package:flutterframework/controllers/library/library_controller.dart';
-import 'package:flutterframework/export.dart';
+import 'package:mfavymusic/controllers/library/library_controller.dart';
+import 'package:mfavymusic/export.dart';
 
 class LibraryBinding extends Bindings {
   @override
